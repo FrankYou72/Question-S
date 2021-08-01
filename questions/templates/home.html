@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Gerador Automático de Questões{% endblock title %}
+
+{% block content %}
+    <div id="readme">
+        Aqui vai o slideshow de apresentação
+    </div>
+    <div id="icons">
+        <a href="{% url 'question-list' %}">Ícone da lista por tema</a> -- Ícone da lista personalizada -- Ícone da questão avulsa
+    </div>
+    
+
+{% endblock content %}

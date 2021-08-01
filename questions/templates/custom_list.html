@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Áreas principais{% endblock title %}
+
+{% block content %}
+    {% for area in object_list %}
+<div class='areaBox'>
+    <h2><a href="{% url 'temas' area.area %}">{{area.area}}</a></h2>
+</div>
+    {% endfor %}
+
+{% endblock content %}

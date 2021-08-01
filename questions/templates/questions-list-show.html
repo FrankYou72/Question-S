@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Gerar lista {% endblock title %}
+
+{% block content %}
+    <h2>Lista de exercicios de {{area}} </h2>
+    <ol>
+    {% for key, enunciado in enunciados.items %}
+        <li><p class='Enunciado'> {{enunciado}}</p></li>
+    {% endfor %}
+    </ol>
+    <h3>Gabarito</h3>
+    <ol>
+    {% for key, resposta in gabarito.items %}
+        <li><p class='Gabarito'>{{resposta}}</p></li>
+    {% endfor %}
+    </ol>
+    <a href={% url 'question-list' %}>Voltar</a>
+
+{% endblock content %}

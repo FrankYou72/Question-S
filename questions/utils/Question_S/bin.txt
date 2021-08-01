@@ -1,0 +1,12 @@
+            ''' 
+        if '0j' in str(resposta):
+            resposta  = str(resposta).replace('0j', '0')
+            resposta = float(eval(resposta))
+        elif type(resposta) == tuple or type(resposta) == list:
+            print('resposta composta:', resposta)
+            for r in resposta:
+                if str(r)[0] != '-':
+                    resposta = float(r)
+                    print('resposta escolhida:', r )
+                    break
+            '''

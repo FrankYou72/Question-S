@@ -1,0 +1,12 @@
+
+<!--{% block title %}Temas de {{instance.area}}{% endblock title %}-->
+
+{% block content %}
+{% csrf_token %}
+    {% for tema in theme_list %}
+        <div class = 'temaBox'>
+            <p style="font-family:verdana">{{tema.area}} -- {{tema.tema}}</p>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
