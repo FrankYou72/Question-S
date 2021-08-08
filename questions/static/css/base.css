@@ -1,0 +1,80 @@
+html {
+    background-color: #8b8961;
+    font-family: Calibri;
+}
+
+header {
+    background-color: #2f3496;
+    height: 150px;
+    font-family: Calibri;
+    display:flex;
+    flex-direction:column
+}
+
+.bigHeader {
+    color: #f8fa1c;
+    font-size:75px;
+    font-weight:400;
+    align-self: center;
+    margin:auto;
+}
+
+.smallHeader {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    margin:auto
+    
+}
+
+.container {
+    background-color:#ffffff;
+    min-height: 600px;
+    height: 100%;
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+div #readme {
+    height: 400px;
+    border: solid;
+    border-color: red;
+
+}
+
+div #icons {
+    height: 200px;
+    border: solid;
+    border-color: blue;
+
+}
+
+.listGenerator {
+    height: 500px;
+    border: solid;
+    border-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+form {
+    margin: auto;
+    margin-top: 0;
+    font-size: 20px;
+    border: solid;
+    border-color: #2f3496;
+}
+
+footer {
+    background-color:#2f3496;
+    height: 50px;
+    color:#f8fa1c;
+    display: flex;
+    flex-direction: column;
+    font-family: Calibri;
+    margin: auto;
+
+}

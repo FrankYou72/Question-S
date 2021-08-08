@@ -25,43 +25,32 @@ class QuestionModel(models.Model):
     def get_question(self):
 
         global opes
-        dados = self.variaveis
-        print('dados ao iniciar: ', dados)
-        print('self.variaveis: ', self.variaveis)
-        print('Tipo de self.variaveis: ', type(self.variaveis))
+        dados = self.variaveis[:]
         escolha = str(choice(self.equacoes))
         escolha_copia = escolha
-        print('Escolha: ', escolha)
         
         for o in opes:
             if o in str(escolha_copia):
                 escolha = escolha.replace(o, f' {o} ')
         escolha_com_opes = escolha
-        print('Escolha após separação: ', escolha)
-
+        
         for o in opes:
             if o in str(escolha_copia):
                 escolha = escolha.replace(o, ' ')
-        print('Escolha sem opes: ', escolha)
-
-        sf = self.variaveis
+        
+        sf = self.variaveis[:]
         es = escolha.split()
-        print('Dados: ', dados)
-        print('Escolha split: ', es)
         for v in sf:
             ('Agora vamos comparar ', v, 'com ', es)
             if v not in es:
                 icognita = v
                 dados.remove(icognita)
-        print('Dados sem icognita: ', dados)
         
         escolha = escolha.strip('[]')
         valores = {}
-        print('unidades: ', self.unidades.keys())
         for d in dados: #Parâmetros para valores de variável
             for u in self.unidades.keys():
                 if d == u:
-                    print(d, 'de dados é igual a ', u, 'de self.unidades')
                     if len(self.unidades[u][1]) == 3:
                         A = self.unidades[u][1][0]
                         B = self.unidades[u][1][1]
@@ -74,18 +63,12 @@ class QuestionModel(models.Model):
                         D = self.unidades[u][1][3]
                         E = self.unidades[u][1][4]
                         valores[d] = (randint(A, B)/C)*10**(randint(D, E))
-        print('Valores dict: ', valores )
         
         for g in self.grandezas.keys():
             if icognita == g:
                 ic = self.grandezas[g]
-        print('ic: ', ic)
         
         escolha_copia_2 = escolha_com_opes
-        
-        #for o in opes:
-        #    if o in escolha:
-        #        escolha_copia = escolha_copia.replace(o, f' {o} ')
         
         escolha = escolha_copia_2.split()
         valores_keys = []
@@ -99,7 +82,6 @@ class QuestionModel(models.Model):
                     i = escolha.index(e)
                     escolha.remove(e)
                     escolha.insert(i, str(valores[e]))
-        print('Escolha após substituição: ', escolha)
         escolha = ''.join(escolha)
 
         E = self.enunciado + '\n'
@@ -112,7 +94,7 @@ class QuestionModel(models.Model):
         resposta = eval(escolha)
 
         if type(resposta) == tuple or type(resposta) == list and len(resposta) >= 2:
-            Gabarito = [r for r in resposta]
+            Gabarito = [str(r) for r in resposta]
             Gabarito = ' ou '.join(Gabarito)
             for r in resposta:
                 if str(r)[0] != '-':
@@ -127,18 +109,6 @@ class QuestionModel(models.Model):
         for u in self.unidades:
             unidade = self.unidades[icognita]
 
-        #try:
-        #    resposta = eval(escolha)
-        #    if type(resposta) == tuple or type(resposta) == list:
-        #        print('resposta composta:', resposta)
-        #        for r in resposta:
-        #            if str(r)[0] != '-':
-        #                resposta = float(r)
-        #                break
-        #    Gabarito = round(float(resposta), 2)
-        #except:
-        #    Gabarito = 5*'-=' + 'Sem solução Real' +  5*'=-'
-        
         return Question(enunciado = E, gabarito = f'{Gabarito} {unidade[0]}')
 
 class Question(models.Model):

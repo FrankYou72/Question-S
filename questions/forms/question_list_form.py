@@ -11,5 +11,5 @@ class QuestionListForm(forms.Form):
 
 
 
-    n_questions = forms.IntegerField()
-    area = forms.ChoiceField(choices=area_options)
+    n_questions = forms.IntegerField(label='Número de questões')
+    area = forms.ChoiceField(choices=area_options, label='Área')
