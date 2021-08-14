@@ -89,13 +89,6 @@ div #readme {
 
 }
 
-div #icons {
-    height: 200px;
-    border: solid;
-    border-color: blue;
-
-}
-
 .title {
     font-size: 40px;
     padding-top: 15px;
@@ -202,4 +195,56 @@ footer {
 .buttons {
     margin:auto;
     height: 30px
+}
+
+.guide {
+    font-size: 35px;
+    padding-top: 15px;
+    background-color: #fff86c;
+    color:black;
+    height: 10%;
+    padding-bottom: 5px;
+}
+
+.areaGrid, .icons {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    flex-direction: row;
+    vertical-align: center;
+}
+
+.areaIcon, .icon {
+    width:32%;
+    height:170px;
+    background-color: #ffffff;
+    color: #2f3496;
+    margin: 5px 5px 5px 5px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.areaIcon a, .icon a {
+    font-size: 30px;
+    margin: auto;
+    align-content: center
+}
+
+.themeList {
+    min-width: 100px;
+    width: 80%;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+.themeList ul {
+    list-style-type: none;
+}
+
+.themeItem {
+    background-color: #ffffff;
+    border-radius: 10px;
+    color:#464357;
+    height: 40px;
+    margin-top: 10px;
 }

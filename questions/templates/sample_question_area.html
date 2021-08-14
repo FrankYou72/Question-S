@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Questão avulsa{% endblock title %}
+
+{% block content %}
+    <h3 class='title'>Questão avulsa</h3>
+    <h4 class='guide'>Selecione a área</h4>
+    <div class="areaGrid">
+    {% for ar in areaList %}
+        <p class="areaIcon"><a href="{% url 'sample-theme' ar.area %}" >{{ar.area}}</a></p>
+    {% endfor %}
+    </div>
+
+{% endblock content %}

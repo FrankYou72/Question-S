@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}햞eas principais{% endblock title %}
+{% block title %}Quest찾o avulsa{% endblock title %}
 
 {% block content %}
-    {% for area in object_list %}
-<div class='areaBox'>
-    <h2><a href="{% url 'temas' area.area %}">{{area.area}}</a></h2>
-</div>
-    {% endfor %}
+    <h3 class='title'>Quest찾o avulsa</h3>
+    <h2 class='title'>Quest찾o sobre {{tema}} - {{area}} </h2>
+    <div class="sampleQuestion">
+        <p>{{pergunta}}</p>
+        <h3>Gabarito</h3>
+        <p>{{resposta}}</p>
+
+    </div>
 
 {% endblock content %}

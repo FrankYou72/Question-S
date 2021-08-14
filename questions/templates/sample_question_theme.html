@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Questão avulsa{% endblock title %}
+
+{% block content %}
+    <h3 class='title'>Questão avulsa de {{area}}</h3>
+    <h4 class='guide'>Selecione o tema</h4>
+    <div class="themeList">
+    <ul>
+    {% for t in themeList %}
+        <li class="themeItem"><a href="{% url 'sample-question' area=area tema=t.tema  %}" >{{t.tema}}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    <a class='back' href='{% url "sample-area"%}'>Voltar</a>
+
+{% endblock content %}
