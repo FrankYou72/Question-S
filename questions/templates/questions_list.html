@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Areas principais{% endblock title %}
+{% block title %}Gerador de Lista por assunto{% endblock title %}
 
 {% block content %}
-
-    <div class='listGenerator'>
-            <form action='' method="post">
-                {% csrf_token %}
-                {{form.as_p}}
-                <input type="submit" class='Submit' value="Gerar Questões">
-            </form>
-    </div>
+    <h3 class='title'>Gerador de lista por assunto</h3>
+    <form action='' method="post" class='listGenerator'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class='Submit' value="Gerar Lista">
+    </form>
+    
 {% endblock content %}

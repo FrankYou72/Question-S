@@ -11,7 +11,7 @@ class QuestionListView(ListView):
 
     def get(self, request):
     # if this is a POST request we need to process the form data
-        form = QuestionListForm(request.POST)
+        form = QuestionListForm()
         return render(request, 'questions_list.html', {'form': form})
 
     def post(self, request):
@@ -25,7 +25,7 @@ class QuestionListView(ListView):
             n = form.cleaned_data['n_questions']
             area = form.cleaned_data['area']
             area_obj = self.model.objects.get(area=area)
-            questions_list = area_obj.get_list(int(n))
+            questions_list = area_obj.get_list(abs(int(n)))
             questions_list.save()
             
             print('yay')

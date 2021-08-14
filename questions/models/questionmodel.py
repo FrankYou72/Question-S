@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from django.db import models
 from django.db.models import manager,CASCADE, ForeignKey, JSONField
 from django.db.models.fields import CharField, TextField, DateTimeField
@@ -26,7 +27,14 @@ class QuestionModel(models.Model):
 
         global opes
         dados = self.variaveis[:]
-        escolha = str(choice(self.equacoes))
+        escolha = choice(self.equacoes)
+
+        if ',' in escolha:
+            escolha = escolha.split(',')
+            print(escolha)
+            escolha = choice(escolha)
+            print(escolha)
+
         escolha_copia = escolha
         
         for o in opes:
@@ -41,7 +49,6 @@ class QuestionModel(models.Model):
         sf = self.variaveis[:]
         es = escolha.split()
         for v in sf:
-            ('Agora vamos comparar ', v, 'com ', es)
             if v not in es:
                 icognita = v
                 dados.remove(icognita)
@@ -90,24 +97,27 @@ class QuestionModel(models.Model):
                 if g == k:
                     E += self.grandezas[g] + ' = ' + str(valores[k]) + ' ' + str(self.unidades[g][0]) + ',\n '
         E += 'assim, calcule o valor do(a)\n' + ic + '\n'
+        unidade = self.unidades[icognita]
+        
+        try:
+            resposta = eval(escolha)
+            if (isinstance(resposta,(tuple, list))) and len(resposta) >= 2:
+                Gabarito = [str(r) for r in resposta]
+                Gabarito = ' ou '.join(Gabarito)
 
-        resposta = eval(escolha)
+            else:
+                resposta = str(resposta)
+                resposta = resposta.replace('[', '')
+                resposta = resposta.replace(']', '')
+                Gabarito = round(float(resposta), 2)
 
-        if type(resposta) == tuple or type(resposta) == list and len(resposta) >= 2:
-            Gabarito = [str(r) for r in resposta]
-            Gabarito = ' ou '.join(Gabarito)
-            for r in resposta:
-                if str(r)[0] != '-':
-                    resposta = float(r)
-                    break
-        else:
-            resposta = str(resposta)
-            resposta = resposta.replace('[', '')
-            resposta = resposta.replace(']', '')
-            Gabarito = round(float(resposta), 2)
-
-        for u in self.unidades:
-            unidade = self.unidades[icognita]
+        except Exception as error:
+            print(escolha_copia)
+            print(escolha)
+            if 'math domain error' or 'float division by zero' in str(error):
+                error = 'Sem solução real'
+                unidade = ['']
+            Gabarito = f'{error}'
 
         return Question(enunciado = E, gabarito = f'{Gabarito} {unidade[0]}')
 

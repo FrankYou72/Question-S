@@ -1,14 +1,19 @@
 html {
-    background-color: #8b8961;
+    background-color: #464357;
     font-family: Calibri;
+    padding-top: 0cm;
+}
+
+body {
+    margin:auto
 }
 
 header {
     background-color: #2f3496;
-    height: 150px;
     font-family: Calibri;
     display:flex;
-    flex-direction:column
+    flex-direction:column;
+    min-height: fit-content;
 }
 
 .bigHeader {
@@ -23,19 +28,58 @@ header {
     color: #ffffff;
     font-size: 25px;
     font-weight: 400;
-    margin:auto
+    margin:auto;
+    display: flex;
+    flex-direction: row;
     
 }
 
+.sideBar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: fit-content; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #2f3496;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+.menu {
+    margin-top: 50%;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.menu li {
+    margin-top: 10px;
+    background-color: #fff86c;
+    border-radius: 10px;
+    color:#434577;
+}
+
+.menu a :link {
+    color:inherit
+}
+
+
+.menu li :hover {
+    font-size: 30px;
+}
+
 .container {
-    background-color:#ffffff;
-    min-height: 600px;
-    height: 100%;
+    background-color: #464357;
+    height: fit-content;
     width: 100%;
+    min-height: 600px;
     max-width: 1100px;
     margin: auto;
-    display: flex;
-    flex-direction: column;
+    text-align: center;
+    padding-bottom: 50px;
+
 }
 
 div #readme {
@@ -52,20 +96,80 @@ div #icons {
 
 }
 
-.listGenerator {
-    height: 500px;
-    border: solid;
-    border-color: red;
-    display: flex;
-    flex-direction: column;
+.title {
+    font-size: 40px;
+    padding-top: 15px;
+    color: #fff86c;
+    height: 10%
 }
 
-form {
+
+
+a {
+    text-decoration: none;
+}
+
+.back, .download {
+    text-align: center;
+    font-size: 30px;
+    background-color: #fff86c;
+    color: black;
+    height: 10px;
+    margin-top: 15px;
+    text-decoration: none;
+    width:100px;
+    border-color: #fff86c;
+    border-radius: 15px;
+    border-right-style: solid;
+    border-left-style: solid;
+    margin-right: 15px;
+    
+}
+
+.back :visited {
+    color: #fff86c;
+    
+}
+
+
+.listGenerator {
+    background-color: #434577;
+    border-radius: 5px;
     margin: auto;
-    margin-top: 0;
+    margin-top: 10px;
     font-size: 20px;
-    border: solid;
-    border-color: #2f3496;
+    width : 50%;
+    min-height: 50%;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+label {
+    color:white;
+    width: 33%;
+}
+
+.intInput {
+    margin-top: 10%;
+    width: 33%;
+    font-size: 20px;
+}
+
+select#id_area {
+    margin-top: 5px;
+    width: 50%;
+    font-size: 20px;
+}
+
+.Submit {
+    height: 40px;
+    font-size: 15px;
+    background-color: #fff86c;
+    font-weight: 600;
+    width: 67%;
+    margin-bottom: 10%;
 }
 
 footer {
@@ -76,5 +180,26 @@ footer {
     flex-direction: column;
     font-family: Calibri;
     margin: auto;
+    text-align: center;
+    margin-bottom: 0;
 
+}
+
+.list {
+    margin-left: 10%;
+    background-color: #ffffff;
+    padding: 10px;
+    padding-left: 5%;
+    text-align: left;
+    min-width: 100px;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+}
+
+.buttons {
+    margin:auto;
+    height: 30px
 }
