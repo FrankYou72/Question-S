@@ -96,6 +96,15 @@ div #readme {
     height: 10%
 }
 
+.subTitle {
+    font-size: 35px;
+    background-color: #fff86c;
+    padding-top: 15px;
+    color: black;
+    height: 10%;
+    width: 100%
+}
+
 
 
 a {
@@ -247,4 +256,17 @@ footer {
     color:#464357;
     height: 40px;
     margin-top: 10px;
+}
+
+.sampleQuestion {
+    margin-left: 10%;
+    background-color: #ffffff;
+    padding: 10px;
+    padding-left: 5%;
+    text-align: left;
+    min-width: 100px;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }

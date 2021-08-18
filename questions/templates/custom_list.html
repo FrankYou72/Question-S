@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
 
-{% block title %}Áreas principais{% endblock title %}
+{% block title %}Lista personalizada{% endblock title %}
 
 {% block content %}
-    {% for area in object_list %}
+    
 <div class='areaBox'>
-    <h2><a href="{% url 'temas' area.area %}">{{area.area}}</a></h2>
+    <select id="areaSelect" onchange="updateThemes()">
+        {% for area in obj_list %}
+        <option>
+            {{area.area}}
+        </option> 
+        {% endfor %}
+    </select>
 </div>
-    {% endfor %}
+   
+
+<div class="themeBox">
+    <select id="themeSelect">
+        
+    </select>
+</div>
 
 {% endblock content %}

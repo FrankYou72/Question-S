@@ -4,12 +4,14 @@
 
 {% block content %}
     <h3 class='title'>Questão avulsa</h3>
-    <h2 class='title'>Questão sobre {{tema}} - {{area}} </h2>
-    <div class="sampleQuestion">
+    <h2 class='subTitle'>Questão sobre {{theme}} </h2>
+    <div class='sampleQuestion'>
         <p>{{pergunta}}</p>
         <h3>Gabarito</h3>
         <p>{{resposta}}</p>
-
+    </div>
+    <div class="buttons">
+        <a class="back" href="{% url 'sample-theme' area=area %}">Voltar</a>
     </div>
 
 {% endblock content %}

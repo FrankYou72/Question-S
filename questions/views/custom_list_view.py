@@ -1,25 +1,17 @@
 from questions.models.questionmodel import QuestionModel
 from django.shortcuts import render
 from django.http import HttpResponse, request
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from questions.models.area import Area
 
-class AreaListView(ListView):
+class CustomListView(TemplateView):
     model = Area
-    template_name = 'areas.html'
+    template_name = 'custom_list.html'
 
-class AreaQuestionsView(ListView):
+    def get(self, request):
+        obj_list = self.model.objects.all()
 
-    def get(self, request, pk):
-        model = Area
-        instance = model.objects.get(area=pk)
-        theme_list  = instance.questionmodel_set.all()
-        return render(request, 'temas.html', {
-            'theme_list' : theme_list,
-            'instance':instance
-            })
-    
-    template_name = 'temas.html'
+        return render(request, self.template_name, {'obj_list':obj_list} )
 
 
 # Create your views here.
