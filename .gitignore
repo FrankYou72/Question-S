@@ -47,3 +47,5 @@ questions_api/__pycache__/__init__.cpython-39.pyc
 questions_api/__pycache__/serializers.cpython-39.pyc
 questions_api/__pycache__/urls.cpython-39.pyc
 questions_api/__pycache__/views.cpython-39.pyc
+questions/__pycache__/__init__.cpython-39.pyc
+*.pyc
