@@ -25,19 +25,6 @@ class QuestionModelViewSet(viewsets.ModelViewSet):
 
         return queryset.all()
 
-    #def get(self, request):
-    #    area = request.data['area']
-    #    area_obj = Area.objects.get(area=area)
-    #    theme_list = area_obj.questionmodel_set.all()
-    #    themes = []
-    #    for t in theme_list:
-    #        themes.append(t.tema)
-#
-    #    print(themes)
-#
-    #    return Response(themes)
-
-
 
 class AreaViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
