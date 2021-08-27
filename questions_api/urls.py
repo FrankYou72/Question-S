@@ -5,6 +5,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'question_models', views.QuestionModelViewSet)
 router.register(r'areas', views.AreaViewSet)
+router.register(r'custom', views.CustomQueryViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

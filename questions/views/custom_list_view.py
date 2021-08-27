@@ -11,7 +11,11 @@ class CustomListView(TemplateView):
     def get(self, request):
         obj_list = self.model.objects.all()
 
-        return render(request, self.template_name, {'obj_list':obj_list} )
+        return render(request, self.template_name, {'obj_list':obj_list})
 
+
+
+class CustomListShowView(TemplateView):
+    template_name = 'custom_list_show.html'
 
 # Create your views here.

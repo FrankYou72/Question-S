@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Áreas principais{% endblock title %}
+{% block title %}Lista personalizada{% endblock title %}
 
 {% block content %}
-    {% for area in object_list %}
-<div class='areaBox'>
-    <h2><a href="{% url 'temas' area.area %}">{{area.area}}</a></h2>
+
+<h2 class='title'>Lista Personalizada </h2>
+<div class="list">
+    <ol id="customQuestions">
+    </ol>
+    <h3>Gabarito</h3>
+    <ol id="customAnswers">
+
+    </ol>
 </div>
-    {% endfor %}
+<div class="buttons">
+    <a class="back" href={% url 'custom' %}>Voltar</a>
+    <a class="download">Download</a>
+</div>
+
 
 {% endblock content %}

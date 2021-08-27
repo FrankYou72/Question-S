@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
 
-from .serializers import QuestionModelSerializer, AreaSerializer, CustomSerializer
+from .serializers import QuestionModelSerializer, AreaSerializer, CustomQuerySerializer
 from questions.models.questionmodel import QuestionModel, Question
 from questions.models.area import Area
-from questions.models.custom import CustomList
+from questions.models.custom import CustomList, CustomQuery
 from rest_framework.response import Response
-from services import custom_list
+from .custom_list import get_custom
 
 
 class QuestionModelViewSet(viewsets.ModelViewSet):
@@ -47,19 +47,24 @@ class AreaViewSet(viewsets.ModelViewSet):
 
         return queryset.all()
 
-class CustomListViewSet(viewsets.ModelViewSet):
+class CustomQueryViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
     permission_classes = ()
     authentication_classes = ()
 
-    queryset = CustomList.objects.all()
-    serializer_class = CustomSerializer
+    queryset = CustomQuery.objects.all()
+    serializer_class = CustomQuerySerializer
 
-    def post(self, request):
+    def create(self, request):
 
+        print(request)
         model_list = request.data['modelList']
 
-        question_list = custom_list(model_list)
+        question_list = get_custom(model_list)
+        ql = CustomList()
+        ql.enunciados = question_list['questions']
+        ql.gabaritos = question_list['answers']
+        ql.save()
 
         return Response(question_list)
             

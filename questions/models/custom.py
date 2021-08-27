@@ -12,4 +12,10 @@ class CustomList(models.Model):
     def __str__(self):
         return 'custom'+ str(self.criado) + '/'
 
+
+
+class CustomQuery(models.Model):
+    modelList = JSONField()
+
+
 # Create your models here.

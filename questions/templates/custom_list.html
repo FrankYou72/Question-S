@@ -3,22 +3,40 @@
 {% block title %}Lista personalizada{% endblock title %}
 
 {% block content %}
-    
 <div class='areaBox'>
     <select id="areaSelect" onchange="updateThemes()">
+        <option></option>
         {% for area in obj_list %}
         <option>
             {{area.area}}
-        </option> 
+        </option>
         {% endfor %}
     </select>
 </div>
-   
 
 <div class="themeBox">
     <select id="themeSelect">
-        <option>---</option>
+        <option></option>
     </select>
 </div>
-
+<button class='button' type="button" onclick="makeList()">Adcionar questão</button>
+<div class=customForm>
+    <div class='customDisplay'>
+        <ol id='customOl'>
+        </ol>
+    </div>
+    <input class='submit' type="submit" value="Gerar Lista" onclick="sendList()">
+</div>
+<h2 class='title'>Lista Personalizada </h2>
+<div class="list">
+    <ol id="customQuestions">
+    </ol>
+    <h3>Gabarito</h3>
+    <ol id="customAnswers">
+    </ol>
+</div>
+<div class="buttons">
+    <a class="back" href={% url 'custom' %}>Voltar</a>
+    <a class="download">Download</a>
+</div>
 {% endblock content %}

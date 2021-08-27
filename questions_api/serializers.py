@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from questions.models.questionmodel import QuestionModel
 from questions.models.area import Area
-from questions.models.custom import CustomList
+from questions.models.custom import CustomList, CustomQuery
 
 
 class QuestionModelSerializer(serializers.HyperlinkedModelSerializer):
@@ -22,4 +22,10 @@ class CustomSerializer(serializers.HyperlinkedModelSerializer):
     permission_classes = ()
     class Meta:
         model = CustomList
+        fields = '__all__'
+
+class CustomQuerySerializer(serializers.HyperlinkedModelSerializer):
+    permission_classes = ()
+    class Meta:
+        model = CustomQuery
         fields = '__all__'
