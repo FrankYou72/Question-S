@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock title%}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/slide.css' %}" />
     <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'js/slide.js' %}"></script>
 </head>
-<body>
+<body onload="currentSlide(1)">
     <header>
         <div class='bigHeader'>
             QuestionS

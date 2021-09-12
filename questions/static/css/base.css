@@ -83,9 +83,7 @@ header {
 }
 
 div #readme {
-    height: 400px;
-    border: solid;
-    border-color: red;
+    height: 406px;
 
 }
 
@@ -269,4 +267,92 @@ footer {
     border-radius: 10px;
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+.topSet {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    height: 500px;
+    max-height: 500px;
+    margin-bottom: 15px;
+}
+
+.areaBox {
+    width: 45%;
+    background-color: #2f3496;
+    height:95%;
+    min-height: 250px;
+    padding-top:10px;
+    margin-top: 10px;
+    margin:auto;
+}
+
+.areaBox label {
+    font-size: 20px
+}
+
+.topSet button {
+    height: 40px;
+    font-size: 15px;
+    background-color: #fff86c;
+    font-weight: 600;
+    width: 67%;
+    margin-bottom: 10%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.customForm {
+    width: 45%;
+    background-color: #2f3496;
+    height:95%;
+    min-height: 250px;
+    padding-top:10px;
+    margin-top: 10px;
+    margin:auto;
+}
+
+.areaBox select {
+    width: 75%;
+    height: 40px;
+    font-size: 25px;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.areaBox button {
+    height: 40px;
+    font-size: 15px;
+    background-color: #fff86c;
+    font-weight: 600;
+    width: 67%;
+    margin-bottom: 10%;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.customDisplay {
+    margin-left: 10%;
+    background-color: #ffffff;
+    padding: 10px;
+    padding-left: 5%;
+    text-align: left;
+    min-width: 100px;
+    max-height:60%;
+    width: 80%;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+}
+
+.listTitle {
+    font-size: 40px;
+    padding-top: 15px;
+    color: #2f3496;
+    height: 10%;
 }

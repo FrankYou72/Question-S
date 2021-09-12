@@ -49,6 +49,7 @@ async function updateThemes() {
 function makeList(){
 
     const customOl = document.getElementById('customOl')
+    const customDisplay = document.getElementsByClassName('customDisplay')
     const theme = document.getElementById('themeSelect').value
     const area = document.getElementById('areaSelect').value
 
@@ -60,6 +61,8 @@ function makeList(){
         "area": decodeURI(area),
         "theme": decodeURI(theme)
     })
+
+    customDisplay.style.display = "block"
 
 }
 
