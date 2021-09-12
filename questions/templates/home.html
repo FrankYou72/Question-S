@@ -3,9 +3,49 @@
 {% block title %}Gerador Automático de Questões{% endblock title %}
 
 {% block content %}
-    <div id="readme">
-        Aqui vai o slideshow de apresentação
+<div id="readme">
+    <!-- Slideshow container -->
+    <div class="slideshow-container">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img class="slideImage" src="{% static 'image/slide-homework.jpg' %}" style="width:100%">
+            <div class="text">Tenha um estoque ILIMITADO de questões para praticar.</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 4</div>
+            <img class="slideImage" src="{% static 'image/slide-quiz.jpg' %}" style="width:100%">
+            <div class="text">Questões originais geradas na hora.</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 4</div>
+            <img class="slideImage" src="{% static 'image/slide-teacher.jpg' %}" style="width:100%">
+            <div class="text">Ideal para professores terem uma base para formular suas avaliações sem ter que recorrer a questões já respondidas na internet.</div>
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">4 / 4</div>
+            <img class="slideImage" src="{% static 'image/slide-tech.jpg' %}" style="width:100%">
+            <div class="text">Deixe o computador lidar com as listas de exercícios. Foque em ensinar ou aprender.</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+</div>
     <div class="icons">
         <p class='icon'><a href="{% url 'question-list' %}">Ícone da lista por tema</a></p>
         <p class='icon'><a href="{% url 'custom' %}">Ícone da lista personalizada</a></p>
