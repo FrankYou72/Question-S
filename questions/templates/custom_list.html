@@ -32,17 +32,24 @@
     <button class='button' type="button" onclick="sendList()">Gerar Lista</button>    
 </div>
 </div>
-<div class="list">
-    <h2 class='listTitle'>Lista Personalizada </h2>
-    <ol id="customQuestions">
-    </ol>
-    <h3>Gabarito</h3>
-    <ol id="customAnswers">
-    </ol>
 
-    <div class="buttons">
-        <a class="back" href={% url 'custom' %}>Voltar</a>
-        <a class="download">Download</a>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+    <div class="list">
+        <h2 class='listTitle'>Lista Personalizada </h2>
+        <ol id="customQuestions">
+        </ol>
+        <h3>Gabarito</h3>
+        <ol id="customAnswers">
+        </ol>
+
+        <div class="buttons">
+            <a class="back" href={% url 'custom' %}>Voltar</a>
+            <a class="download">Download</a>
+        </div>
     </div>
 </div>
+
+
 {% endblock content %}

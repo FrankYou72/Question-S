@@ -10,9 +10,9 @@ async function updateThemes() {
 
     let emptyOpt = document.createElement('option')
     emptyOpt.innerHTML = ''
-    themeSelect.appendChild(emptyOpt) 
+    themeSelect.appendChild(emptyOpt)
 
-    if (area !== ''){
+    if (area !== '') {
 
         let decodedArea = decodeURI(area)
         console.log(decodedArea)
@@ -26,13 +26,13 @@ async function updateThemes() {
         let themeList = new Array()
         fetch(url).then(response => {
             return response.json()
-        }).then( result => {
+        }).then(result => {
             let themeList = new Array()
             result.map(r => {
                 themeList.push(r['tema'])
             })
-            return themeList   
-        }).then( themeList => {
+            return themeList
+        }).then(themeList => {
             themeList.map(t => {
                 let opt = document.createElement('option')
                 opt.innerHTML = t
@@ -42,11 +42,11 @@ async function updateThemes() {
         })
     }
 
-    
+
 
 }
 
-function makeList(){
+function makeList() {
 
     const customOl = document.getElementById('customOl')
     const customDisplay = document.getElementsByClassName('customDisplay')
@@ -95,7 +95,7 @@ async function sendList() {
             const answers = result['answers']
             const customQuestions = document.getElementById('customQuestions')
             const customAnswers = document.getElementById('customAnswers')
-   
+
             questions.map(
                 q => {
                     let liQuestion = document.createElement('li')
@@ -114,6 +114,17 @@ async function sendList() {
             )
         }
     )
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    modal.style.display = "block"
     customList = []
     const customOl = document.getElementById('customOl')
     customOl.innerHTML = ''

@@ -10,6 +10,7 @@
 /* Hide the images by default */
 .mySlides {
     display: none;
+    max-height: 406px;
 }
 
 
@@ -111,5 +112,7 @@
 
 .slideImage {
     width: 100%;
+    max-width: 1100px;
     height: auto;
+    margin-left: 11.5%;
 }
