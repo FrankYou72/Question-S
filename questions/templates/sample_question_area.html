@@ -7,7 +7,7 @@
     <h4 class='guide'>Selecione a área</h4>
     <div class="areaGrid">
     {% for ar in areaList %}
-        <p class="areaIcon"><a href="{% url 'sample-theme' ar.area %}" >{{ar.area}}</a></p>
+        <p class="areaIcon"><a href="{% url 'sample-theme' ar.area %}" ><img class='iconImg' src="{{ar.icon.url}}" /></a>{{ar.area}}</p>
     {% endfor %}
     </div>
 

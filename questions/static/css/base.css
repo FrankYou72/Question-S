@@ -193,19 +193,32 @@ footer {
 }
 
 .areaIcon, .icon {
-    width:32%;
-    height:170px;
+    width: 32%;
+    height: 170px;
     background-color: #ffffff;
     color: #2f3496;
     margin: 5px 5px 5px 5px;
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
 }
 
 .areaIcon a, .icon a {
     font-size: 30px;
     margin: auto;
-    align-content: center
+    align-content: center;
+}
+
+.icon {
+    flex-direction: column;
+}
+
+.icons p {
+    font-size: 2rem;
+}
+.iconImg {
+    height: 8rem;
 }
 
 .themeList {

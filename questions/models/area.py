@@ -1,6 +1,6 @@
 from django.db import models
-from django.db.models import manager, CASCADE, ForeignKey, JSONField, FileField
-from django.db.models.fields import CharField, TextField
+from django.db.models import manager, CASCADE, ForeignKey, JSONField, FileField, ImageField
+from django.db.models.fields import CharField, TextField #ImageField
 from random import choice
 from datetime import date, datetime
 from docx import Document
@@ -8,7 +8,9 @@ from docx import Document
 
 class Area(models.Model):
     area = CharField(max_length=100)
+    icon = ImageField(upload_to='static/images/', null=True, blank=True)
     objects = manager.Manager()
+    
 
     def get_list(self, n):
         temas = self.questionmodel_set.all()
