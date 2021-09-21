@@ -42,11 +42,17 @@ class QuestionListShowView(DetailView):
 
     def get(self, request, pk):
         instance = self.model.objects.get(pk=pk)
+        #word_doc = instance.to_docx()
         texts = instance.enunciados
         answers = instance.gabarito
         area = self.model.objects.get(pk=pk).area.area
         url = self.template
-        return render(request, url, context = {'area' : area, 'pk': pk, 'enunciados': texts, 'gabarito':answers})
+        return render(request, url, context = {
+                                                'area' : area,
+                                                'pk': pk,
+                                                'enunciados': texts,
+                                                'gabarito':answers
+                                                })
     
 
 # Create your views here.
