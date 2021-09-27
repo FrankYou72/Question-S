@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock title %}
+{% block content %}
+    <h2>Registro de novo usuário</h2>
+    <form method='POST' action='' class='listGenerator'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="cadastrar">
+    </form>
+{% endblock content %}
+

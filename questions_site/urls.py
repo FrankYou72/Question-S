@@ -21,5 +21,7 @@ from .settings import STATIC_URL, STATIC_ROOT, MEDIA_URL, MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('questions.urls')),
-    path('api/', include('questions_api.urls'))
+    path('api/', include('questions_api.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls'))
 ]+ static(STATIC_URL, document_root=STATIC_ROOT) + static(MEDIA_URL, document_root=MEDIA_ROOT)
