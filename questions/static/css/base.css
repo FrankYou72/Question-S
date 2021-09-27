@@ -76,13 +76,12 @@ div #readme {
 }
 
 
-
 a {
     color:#2f3496;
     text-decoration: none;
 }
 
-.back, .download {
+.back, .download, .signup input[type=submit] {
     text-align: center;
     font-size: 30px;
     background-color: #fff86c;
@@ -114,7 +113,21 @@ a {
     width : 50%;
     display: inline-block;
     text-align: center;
-    color:#ffffff
+    color:#ffffff;
+    padding-bottom: 2%;
+    margin-bottom: 3%
+    
+}
+
+.signup input[type=submit] {
+    height:2rem;
+    width:12rem;
+    text-align:center;
+    padding-bottom:5%;
+}
+
+.listGenerator span {
+    display: none
 }
 
 label {
@@ -154,6 +167,11 @@ footer {
     text-align: center;
     margin-bottom: 0;
 
+}
+
+footer a {
+    color:white;
+    text-decoration: none;
 }
 
 .list {
