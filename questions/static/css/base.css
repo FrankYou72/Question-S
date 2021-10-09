@@ -359,3 +359,45 @@ footer a {
     color: #2f3496;
     height: 10%;
 }
+
+.loginContainer {
+    display:flex;
+    flex-direction: row;
+    height: 50%;
+    font-size: 1.2rem;
+    padding: 3%;
+}
+
+.loginContainer label {
+    color:black;
+}
+
+.loginContainer button, .loginContainer a {
+    height: 40px;
+    font-size: 15px;
+    background-color: #434577;
+    color:#ffffff;
+    font-weight: 600;
+    width: 67%;
+    margin-bottom: 10%;
+}
+
+
+.login {
+    min-width: 33%;
+    background-color: #fff86c;
+    border-radius: 5px;
+    margin:auto;
+    margin-left: 5%;
+}
+
+.orSignup {
+    min-width: 33%;
+    height: auto;
+    background-color: #fff86c;
+    border-radius: 5px;
+    margin:auto;
+    margin-right: 5%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
