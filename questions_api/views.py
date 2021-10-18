@@ -1,5 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.views.generic.base import RedirectView
 from rest_framework import viewsets, permissions
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .serializers import QuestionModelSerializer, AreaSerializer, CustomQuerySerializer
 from questions.models.questionmodel import QuestionModel, Question
@@ -9,7 +12,7 @@ from rest_framework.response import Response
 from .custom_list import get_custom
 
 
-class QuestionModelViewSet(viewsets.ModelViewSet):
+class QuestionModelViewSet(viewsets.ModelViewSet, LoginRequiredMixin):
     permission_classes = (permissions.IsAuthenticated,)
     permission_classes = ()
     authentication_classes = ()
@@ -29,7 +32,7 @@ class QuestionModelViewSet(viewsets.ModelViewSet):
         return queryset.all()
 
 
-class AreaViewSet(viewsets.ModelViewSet):
+class AreaViewSet(viewsets.ModelViewSet, LoginRequiredMixin):
     permission_classes = (permissions.IsAuthenticated,)
     permission_classes = ()
     authentication_classes = ()
@@ -47,7 +50,8 @@ class AreaViewSet(viewsets.ModelViewSet):
 
         return queryset.all()
 
-class CustomQueryViewSet(viewsets.ModelViewSet):
+
+class CustomQueryViewSet(viewsets.ModelViewSet, LoginRequiredMixin):
     permission_classes = (permissions.IsAuthenticated,)
     permission_classes = ()
     authentication_classes = ()
@@ -55,16 +59,21 @@ class CustomQueryViewSet(viewsets.ModelViewSet):
     queryset = CustomQuery.objects.all()
     serializer_class = CustomQuerySerializer
 
+    
     def create(self, request):
 
-        print(request)
+        print('user: ', request.user)
         model_list = request.data['modelList']
 
         question_list = get_custom(model_list)
         ql = CustomList()
         ql.enunciados = question_list['questions']
         ql.gabaritos = question_list['answers']
-        ql.save()
+
+        if request.user.id != None:
+            ql.user_id = request.user.id
+            print('user detected! - saving')
+            ql.save()
 
         return Response(question_list)
             

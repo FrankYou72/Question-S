@@ -58,7 +58,7 @@ def refactor():
                             refactored[key][theme]["units"][var]["minPower"] = min_power
                             refactored[key][theme]["units"][var]["maxPower"] = max_power
 
-    with open('q_data.txt', 'w') as db:
-        json.dump(refactored, db)
+    with open('q_data.json', 'w', encoding="utf8") as db:
+        json.dump(refactored, db, indent=4, ensure_ascii=False)
 
     return refactored

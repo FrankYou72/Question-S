@@ -401,3 +401,58 @@ footer a {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.contact {
+    max-width: 50%;
+    color:#ffffff;
+    font-size: 1.5rem;
+    text-align: left;
+    text-indent: 5%;
+    margin: auto;
+    margin-left: 5%; margin-right: auto;
+}
+
+.headers {
+    color: #000000;
+    font-size: 1.2rem;
+    position: relative;
+    top:5%
+}
+
+.businessCard img {
+    position: relative;
+    top: 0%;
+    width: 450px;
+    margin:auto;
+}
+
+.links {
+    position: relative;
+    top: -3%;
+}
+
+.businessCard {
+    font-size: 1.5rem;
+    min-width: fit-content;
+    max-width: 35%;
+    width: 35%;
+    margin-right: auto;
+    margin-top: 2%; margin-bottom:  2%;
+    background-color: #f8fa1c;
+    border-radius: 5px;
+    box-shadow: inset;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.businessCard h3, .businessCard h2 {
+    color: #000000;
+    margin-bottom: 3%;
+    height: 30%;
+}
+
+.contactPage {
+    display: flex;
+    flex-direction: row;
+}

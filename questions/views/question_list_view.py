@@ -26,10 +26,16 @@ class QuestionListView(ListView):
             area = form.cleaned_data['area']
             area_obj = self.model.objects.get(area=area)
             questions_list = area_obj.get_list(abs(int(n)))
-            questions_list.save()
-            
+            questions_list.user_id = request.user.id
+            if request.user.id != None:
+                print("FUCK")
+                questions_list.save()
             print('yay')
-            return QuestionListShowView().get(request, questions_list.id)
+            return QuestionListShowView().get(request,
+                                                questions_list.area.area,
+                                                questions_list.enunciados,
+                                                questions_list.gabarito
+                                                )
             
         else:
             print('Form is not valid')
@@ -40,17 +46,17 @@ class QuestionListShowView(DetailView):
     template = 'questions-list-show.html'
     context_object_name = 'question_list'
 
-    def get(self, request, pk):
-        instance = self.model.objects.get(pk=pk)
+    def get(self, request, area, problems, answers):
+        #instance = self.model.objects.get(pk=pk)
         #word_doc = instance.to_docx()
-        texts = instance.enunciados
-        answers = instance.gabarito
-        area = self.model.objects.get(pk=pk).area.area
+        #texts = instance.enunciados
+        #answers = instance.gabarito
+        #area = self.model.objects.get(pk=pk).area.area
         url = self.template
         return render(request, url, context = {
                                                 'area' : area,
-                                                'pk': pk,
-                                                'enunciados': texts,
+                                                #'pk': pk,
+                                                'enunciados': problems,
                                                 'gabarito':answers
                                                 })
     

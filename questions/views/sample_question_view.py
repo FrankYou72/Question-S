@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from questions.models.questionmodel import QuestionModel
 from django.shortcuts import render
 from django.http import HttpResponse, request
 from django.views.generic import ListView, DetailView, TemplateView
 from questions.models.area import Area
 
-class SampleAreaView(TemplateView):
+class SampleAreaView(TemplateView, LoginRequiredMixin):
     model=Area
     template_name = 'sample_area'
 
@@ -36,34 +37,3 @@ class SampleQuestionView(TemplateView):
                                                                 'resposta': question.gabarito
                                                                 })
 
-
-#class SampleThemeView(DetailView):
-#    model = QuestionList
-#    template = 'questions-list-show.html'
-#    context_object_name = 'question_list'
-#
-#    def get(self, request, pk):
-#        instance = self.model.objects.get(pk=pk)
-#        texts = instance.enunciados
-#        answers = instance.gabarito
-#        area = self.model.objects.get(pk=pk).area.area
-#        url = self.template
-#        return render(request, url, context = {'area' : area, 'pk': pk, 'enunciados': texts, 'gabarito':answers})
-#
-#
-#class SampleQuestionView(DetailView):
-#    model = QuestionList
-#    template = 'questions-list-show.html'
-#    context_object_name = 'question_list'
-#
-#    def get(self, request, pk):
-#        instance = self.model.objects.get(pk=pk)
-#        texts = instance.enunciados
-#        answers = instance.gabarito
-#        area = self.model.objects.get(pk=pk).area.area
-#        url = self.template
-#        return render(request, url, context = {'area' : area, 'pk': pk, 'enunciados': texts, 'gabarito':answers})
-#
-#
-## Create your views here.
-#

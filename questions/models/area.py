@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models import manager, CASCADE, ForeignKey, JSONField, FileField, ImageField
 from django.db.models.fields import CharField, TextField #ImageField
 from random import choice
@@ -35,6 +36,7 @@ class QuestionList(models.Model):
     area = ForeignKey(Area, on_delete=CASCADE)
     enunciados = JSONField()
     gabarito = JSONField()
+    user = ForeignKey(User, on_delete=CASCADE, null=True)
     #docx_file = FileField(null=True)
 
     def to_docx(self):

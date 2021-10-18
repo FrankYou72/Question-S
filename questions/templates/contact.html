@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contato{% endblock title %}
+
+{% block content %}
+
+    
+<title>Sobre o autor</title>
+
+<div class="contactPage">
+
+
+    <article class='contact'>
+        <p>Este projeto nasceu em 2020, um pouco depois de eu ter iniciado meus estudos em programação.
+        Meu objetivo principal é que este site se torne uma ferramenta a mais para todos os educadores de ciências exatas que precisam sempre de novas questões tenham uma fonte quase "robótica" de inspiração.
+        </p><br>
+        <p>Ao gerar uma lista de exercícios, os professores se veem geralmente entre dedicar um tempo que não dispõem para formular questões originais, ou utilizar questões da internet.
+        Se optarem por questões da internet, toda a ideia de avaliação acaba sendo desfocada pelo fato de que, assim como o mestre pensou em facilitar sua vida com coisas prontas online, os alunos também pensarão o mesmo.
+        Alguns professores não chegam a ter ideia da facilidade de encontrar o gabarito de uma questão desde que esta questão já tenha sido publicada em algum livro ou algum processo seletivo.
+        Com o site QuestionS, isso pode mudar.
+        </p><br>
+        <p>Unindo o melhor dos dois mundos, a computação torna a geração de questões uma coisa rápida e prática. Ao mesmo tempo, as questões são geradas com valores aleatórios a cada momento.
+        Você sempre pode ter certeza que aquela questão é realmente original! Por outro lado, este programa (ainda) não entrega tudo de bandeja. As questões geradas são apenas esqueletos de problemas, cabendo ao professor usar seu tempo exercitando a criatividade ao contextualizar os problemas, sem se preocupar com desenvolver cálculos.
+        </p><br>
+        <p>Este é meu primeiro grande projeto, e no momento estou tocando ele sozinho. Caso tenha despertado seu interesse e queira conversar sobre, meu contato segue abaixo:</p>
+    </article>
+
+    <div class="businessCard">
+        <div class="headers">
+            <h3 class="title">Franklin Santos</h3>
+            <h2>Físico, Professor e Desenvolvedor Python</h2>
+        </div>
+        <img class="" src="{% static 'image/foto-minha.jpeg' %}" >
+        <div class='links'>
+            <a href="mailto:frankjs72@hotmail.com&subject=Email do QuestionS">Fale comigo por email</a><br>
+            <a href="https://www.linkedin.com/in/franklin-santos-bb48a89b/">Fale comigo pelo LinkedIn</a>
+        </div>
+         
+    </div>
+</div>
+{% endblock content %}
