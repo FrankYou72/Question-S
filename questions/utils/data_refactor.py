@@ -1,4 +1,4 @@
-from .Q_data import Packs
+from .Q_data import *
 from .questionS import get_vars
 import json
 
@@ -7,11 +7,6 @@ def refactor():
 
     for key in Packs.keys():
         refactored[key] = {}
-
-        #refactored[key]["variables"] = []
-        #refactored[key]["quantities"] = {}
-        #refactored[key]["units"] = {}
-        #refactored[key] = {}
 
         variables = Packs[key][0]
         equations = Packs[key][1]
@@ -23,12 +18,17 @@ def refactor():
             refactored[key][theme]["equation"] = str(equations[theme][0])
             refactored[key][theme]["problem"] = equations[theme][1]
             
-            refactored[key][theme]["variables"] = get_vars(equations[theme][0], variables)
+            var_dict = get_vars(equations[theme][0], variables)
+            refactored[key][theme]["variables"] = list(var_dict.keys())
             
             refactored[key][theme]["quantities"] = {}
             refactored[key][theme]["units"] = {}
+            refactored[key][theme]['equations'] = {}
 
-            for var in refactored[key][theme]["variables"]:
+            for var in var_dict.keys():
+                equation = solve(equations[theme][0], variables[var_dict[var]])
+                refactored[key][theme]['equations'][var] = (str(equation))
+
                 for q in quantities.keys():
                     if str(q) == var:
                         refactored[key][theme]["quantities"][var] = quantities[q]

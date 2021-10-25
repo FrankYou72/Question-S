@@ -32,6 +32,11 @@
                     "maxLimit": 50,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "S": "[S0 + deltaS]",
+                "S0": "[S - deltaS]",
+                "deltaS": "[S - S0]"
             }
         },
         "Velocidade média": {
@@ -66,6 +71,11 @@
                     "maxLimit": 30,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltaS": "[deltat*vm]",
+                "deltat": "[deltaS/vm]",
+                "vm": "[deltaS/deltat]"
             }
         },
         "Posição MRU": {
@@ -108,6 +118,12 @@
                     "maxLimit": 50,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "S": "[S0 + t*v]",
+                "S0": "[S - t*v]",
+                "t": "[(S - S0)/v]",
+                "v": "[(S - S0)/t]"
             }
         },
         "Velocidade": {
@@ -150,6 +166,12 @@
                     "maxLimit": 15,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "a": "[(v - v0)/t]",
+                "t": "[(v - v0)/a]",
+                "v": "[a*t + v0]",
+                "v0": "[-a*t + v]"
             }
         },
         "Variação de velocidade": {
@@ -184,6 +206,11 @@
                     "maxLimit": 15,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltav": "[v - v0]",
+                "v": "[deltav + v0]",
+                "v0": "[-deltav + v]"
             }
         },
         "Aceleração média": {
@@ -218,6 +245,11 @@
                     "maxLimit": 30,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "am": "[deltav/deltat]",
+                "deltav": "[am*deltat]",
+                "deltat": "[deltav/am]"
             }
         },
         "Posição MRUV": {
@@ -227,7 +259,6 @@
                 "S",
                 "S0",
                 "a",
-                "t",
                 "t",
                 "v0"
             ],
@@ -269,6 +300,13 @@
                     "maxLimit": 15,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "S": "[S0 + 0.5*a*t**2 + t*v0]",
+                "S0": "[S - 0.5*a*t**2 - t*v0]",
+                "a": "[2.0*(S - S0 - t*v0)/t**2]",
+                "t": "[(-v0 + 1.4142135623731*sqrt(S*a - S0*a + 0.5*v0**2))/a, -(v0 + 1.4142135623731*sqrt(S*a - S0*a + 0.5*v0**2))/a]",
+                "v0": "[(S - S0 - 0.5*a*t**2)/t]"
             }
         },
         "Torricelli": {
@@ -311,6 +349,12 @@
                     "maxLimit": 50,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "a": "[(-v0**2 + vf**2)/(2*deltaS)]",
+                "deltaS": "[(-v0**2 + vf**2)/(2*a)]",
+                "v0": "[-sqrt(-2*a*deltaS + vf**2), sqrt(-2*a*deltaS + vf**2)]",
+                "vf": "[-sqrt(2*a*deltaS + v0**2), sqrt(2*a*deltaS + v0**2)]"
             }
         },
         "Momento de ultrapassagem MRU": {
@@ -361,6 +405,13 @@
                     "maxLimit": 0,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "tult": "[(-S01 + S02)/(v1 - v2)]",
+                "S01": "[S02 - tult*v1 + tult*v2]",
+                "S02": "[S01 + tult*v1 - tult*v2]",
+                "v1": "[(-S01 + S02 + tult*v2)/tult]",
+                "v2": "[(S01 - S02 + tult*v1)/tult]"
             }
         }
     },
@@ -397,6 +448,11 @@
                     "maxLimit": 630,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "deltatheta": "[theta - theta0]",
+                "theta": "[deltatheta + theta0]",
+                "theta0": "[-deltatheta + theta]"
             }
         },
         "Velocidade angular média": {
@@ -431,6 +487,11 @@
                     "maxLimit": 20,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "wm": "[deltatheta/deltat]",
+                "deltatheta": "[deltat*wm]",
+                "deltat": "[deltatheta/wm]"
             }
         },
         "Posição angular MCU": {
@@ -473,6 +534,12 @@
                     "maxLimit": 630,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "t": "[(theta - theta0)/w]",
+                "w": "[(theta - theta0)/t]",
+                "theta": "[t*w + theta0]",
+                "theta0": "[-t*w + theta]"
             }
         },
         "Velocidade angular": {
@@ -515,6 +582,12 @@
                     "maxLimit": 315,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "alpha": "[(w - w0)/t]",
+                "t": "[(w - w0)/alpha]",
+                "w": "[alpha*t + w0]",
+                "w0": "[-alpha*t + w]"
             }
         },
         "Variação de velocidade angular": {
@@ -549,6 +622,11 @@
                     "maxLimit": 315,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "deltaw": "[w - w0]",
+                "w": "[deltaw + w0]",
+                "w0": "[-deltaw + w]"
             }
         },
         "Aceleração angular média": {
@@ -583,6 +661,11 @@
                     "maxLimit": 20,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "alpham": "[deltaw/deltat]",
+                "deltaw": "[alpham*deltat]",
+                "deltat": "[deltaw/alpham]"
             }
         },
         "Posição MCUV": {
@@ -590,7 +673,6 @@
             "problem": "Um corpo está girando sobre um disco com aceleração angular constante. Sabe-se que:",
             "variables": [
                 "alpha",
-                "t",
                 "t",
                 "w0",
                 "theta",
@@ -634,6 +716,13 @@
                     "maxLimit": 630,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "alpha": "[2.0*(-t*w0 + theta - theta0)/t**2]",
+                "t": "[(-w0 + 1.4142135623731*sqrt(alpha*theta - alpha*theta0 + 0.5*w0**2))/alpha, -(w0 + 1.4142135623731*sqrt(alpha*theta - alpha*theta0 + 0.5*w0**2))/alpha]",
+                "w0": "[(-0.5*alpha*t**2 + theta - theta0)/t]",
+                "theta": "[0.5*alpha*t**2 + t*w0 + theta0]",
+                "theta0": "[-0.5*alpha*t**2 - t*w0 + theta]"
             }
         },
         "Velocidade linear": {
@@ -676,6 +765,12 @@
                     "maxLimit": 40,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "R": "[deltat*vlin/(2*pi*n)]",
+                "n": "[deltat*vlin/(2*pi*R)]",
+                "deltat": "[2*pi*R*n/vlin]",
+                "vlin": "[2*pi*R*n/deltat]"
             }
         },
         "Período v": {
@@ -710,6 +805,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "R": "[T*vlin/(2*pi)]",
+                "vlin": "[2*pi*R/T]",
+                "T": "[2*pi*R/vlin]"
             }
         },
         "frequência v": {
@@ -744,6 +844,11 @@
                     "maxLimit": 10,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "f": "[vlin/(2*pi*R)]",
+                "vlin": "[2*pi*R*f]",
+                "R": "[vlin/(2*pi*f)]"
             }
         },
         "Velocidade angular/ linear": {
@@ -778,6 +883,11 @@
                     "maxLimit": 10,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "w": "[vlin/R]",
+                "vlin": "[R*w]",
+                "R": "[vlin/w]"
             }
         },
         "Período w": {
@@ -804,6 +914,10 @@
                     "maxLimit": 630,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "T": "[2*pi/w]",
+                "w": "[2*pi/T]"
             }
         },
         "frequência w": {
@@ -830,6 +944,10 @@
                     "maxLimit": 630,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "f": "[w/(2*pi)]",
+                "w": "[2*pi*f]"
             }
         },
         "Aceleração centrípeta": {
@@ -864,6 +982,11 @@
                     "maxLimit": 10,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "acp": "[vlin**2/R]",
+                "vlin": "[-sqrt(R*acp), sqrt(R*acp)]",
+                "R": "[vlin**2/acp]"
             }
         }
     },
@@ -872,7 +995,6 @@
             "equation": "Eq(5*deltat**2 - deltat*vy0 + hlv, 0)",
             "problem": "Um corpo é lançado verticalmente para cima. Sabe-se que:\ng = 10 m/s^2",
             "variables": [
-                "deltat",
                 "deltat",
                 "vy0",
                 "hlv"
@@ -901,6 +1023,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltat": "[vy0/10 - sqrt(-20*hlv + vy0**2)/10, vy0/10 + sqrt(-20*hlv + vy0**2)/10]",
+                "vy0": "[5*deltat + hlv/deltat]",
+                "hlv": "[deltat*(-5*deltat + vy0)]"
             }
         },
         "Altura máxima": {
@@ -927,6 +1054,10 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "hmax": "[vy0**2/20]",
+                "vy0": "[-2*sqrt(5)*sqrt(hmax), 2*sqrt(5)*sqrt(hmax)]"
             }
         },
         "Altura QL": {
@@ -953,6 +1084,10 @@
                     "maxLimit": 30,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltat": "[-sqrt(5)*sqrt(hql)/5, sqrt(5)*sqrt(hql)/5]",
+                "hql": "[5*deltat**2]"
             }
         },
         "Alcance máximo LH": {
@@ -987,6 +1122,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Dmax": "[sqrt(5)*sqrt(hlh)*vx/5]",
+                "hlh": "[5*Dmax**2/vx**2]",
+                "vx": "[sqrt(5)*Dmax/sqrt(hlh)]"
             }
         },
         "Alcance Máximo LO": {
@@ -1021,6 +1161,11 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Dmax": "[v0**2*sin(pi*theta/90)/10]",
+                "v0": "[-sqrt(10)*sqrt(Dmax/sin(pi*theta/90)), sqrt(10)*sqrt(Dmax/sin(pi*theta/90))]",
+                "theta": "[90*asin(10*Dmax/v0**2)/pi, -90*asin(10*Dmax/v0**2)/pi + 90]"
             }
         }
     },
@@ -1057,6 +1202,11 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F1": "[-F2 - F3]",
+                "F2": "[-F1 - F3]",
+                "F3": "[-F1 - F2]"
             }
         },
         "PFD 2 forças": {
@@ -1099,6 +1249,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F1": "[-F2 + a*m]",
+                "F2": "[-F1 + a*m]",
+                "a": "[(F1 + F2)/m]",
+                "m": "[(F1 + F2)/a]"
             }
         },
         "PFD 3 forças": {
@@ -1149,6 +1305,13 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F1": "[-F2 - F3 + a*m]",
+                "F2": "[-F1 - F3 + a*m]",
+                "F3": "[-F1 - F2 + a*m]",
+                "a": "[(F1 + F2 + F3)/m]",
+                "m": "[(F1 + F2 + F3)/a]"
             }
         },
         "PFD resultante fácil": {
@@ -1183,6 +1346,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fres": "[a*m]",
+                "a": "[Fres/m]",
+                "m": "[Fres/a]"
             }
         },
         "PFD resultante difícil": {
@@ -1193,8 +1361,7 @@
                 "m",
                 "deltaS",
                 "deltat",
-                "v0",
-                "deltat"
+                "v0"
             ],
             "quantities": {
                 "Fres": "Força resultante",
@@ -1234,6 +1401,13 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Fres": "[2*m*(deltaS - deltat*v0)/deltat**2]",
+                "m": "[Fres*deltat**2/(2*(deltaS - deltat*v0))]",
+                "deltaS": "[Fres*deltat**2/(2*m) + deltat*v0]",
+                "deltat": "[(-m*v0 + sqrt(m*(2*Fres*deltaS + m*v0**2)))/Fres, -(m*v0 + sqrt(m*(2*Fres*deltaS + m*v0**2)))/Fres]",
+                "v0": "[-Fres*deltat/(2*m) + deltaS/deltat]"
             }
         },
         "Ação e reação sem força": {
@@ -1276,6 +1450,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "a1": "[-a2*m2/m1]",
+                "m1": "[-a2*m2/a1]",
+                "a2": "[-a1*m1/m2]",
+                "m2": "[-a1*m1/a2]"
             }
         },
         "Ação e reação com força": {
@@ -1310,6 +1490,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F1": "[-a2*m2]",
+                "a2": "[-F1/m2]",
+                "m2": "[-F1/a2]"
             }
         },
         "Força peso": {
@@ -1336,6 +1521,10 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "P": "[10*m]",
+                "m": "[P/10]"
             }
         },
         "Força normal": {
@@ -1370,6 +1559,11 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Normal": "[-10*m*cos(pi*alpha/180)]",
+                "m": "[-Normal/(10*cos(pi*alpha/180))]",
+                "alpha": "[180*acos(-Normal/(10*m))/pi, -180*acos(-Normal/(10*m))/pi + 360]"
             }
         },
         "Tensão": {
@@ -1396,6 +1590,10 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "T1": "[-T2]",
+                "T2": "[-T1]"
             }
         },
         "Força elástica": {
@@ -1430,6 +1628,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Fel": "[-k*x]",
+                "k": "[-Fel/x]",
+                "x": "[-Fel/k]"
             }
         },
         "Força elástica aceleração": {
@@ -1472,6 +1675,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "a": "[-k*x/m]",
+                "m": "[-k*x/a]",
+                "k": "[-a*m/x]",
+                "x": "[-a*m/k]"
             }
         },
         "Força elástica peso": {
@@ -1506,6 +1715,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "k": "[10*m/x]",
+                "x": "[10*m/k]",
+                "m": "[k*x/10]"
             }
         },
         "Força de atrito estático": {
@@ -1540,6 +1754,11 @@
                     "maxLimit": 30,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "F": "[10*m*mu]",
+                "m": "[F/(10*mu)]",
+                "mu": "[F/(10*m)]"
             }
         },
         "Força de atrito cinético resultante": {
@@ -1574,6 +1793,11 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fatc + Fres]",
+                "Fatc": "[F - Fres]",
+                "Fres": "[F - Fatc]"
             }
         },
         "Força de atrito cinético massa": {
@@ -1616,6 +1840,12 @@
                     "maxLimit": 30,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "F": "[m*(a - 10*mu)]",
+                "m": "[F/(a - 10*mu)]",
+                "a": "[F/m + 10*mu]",
+                "mu": "[(-F + a*m)/(10*m)]"
             }
         },
         "Coeficiente de atrito": {
@@ -1642,6 +1872,10 @@
                     "maxLimit": 30,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "a": "[10*mu]",
+                "mu": "[a/10]"
             }
         },
         "Plano inclinado sem atrito resultante": {
@@ -1676,6 +1910,11 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fres": "[-10*m*sin(pi*alpha/180)]",
+                "m": "[-Fres/(10*sin(pi*alpha/180))]",
+                "alpha": "[-180*asin(Fres/(10*m))/pi, 180*asin(Fres/(10*m))/pi + 180]"
             }
         },
         "Plano inclinado sem atrito aceleração": {
@@ -1702,6 +1941,10 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "a": "[-10*sin(pi*alpha/180)]",
+                "alpha": "[-180*asin(a/10)/pi, 180*asin(a/10)/pi + 180]"
             }
         },
         "Plano inclinado atrito estático": {
@@ -1736,6 +1979,11 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fate": "[-10*m*sin(pi*alpha/180)]",
+                "m": "[-Fate/(10*sin(pi*alpha/180))]",
+                "alpha": "[-180*asin(Fate/(10*m))/pi, 180*asin(Fate/(10*m))/pi + 180]"
             }
         },
         "Plano inclinado atrito estático coeficiente": {
@@ -1762,6 +2010,10 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "mu": "[tan(pi*alpha/180)]",
+                "alpha": "[180*atan(mu)/pi]"
             }
         },
         "Plano inclinado atrito cinético resultante": {
@@ -1804,6 +2056,12 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fatc": "[-Fres - 10*m*sin(pi*alpha/180)]",
+                "Fres": "[-Fatc - 10*m*sin(pi*alpha/180)]",
+                "m": "[-(Fatc + Fres)/(10*sin(pi*alpha/180))]",
+                "alpha": "[180*(asin((Fatc + Fres)/(10*m)) + pi)/pi, -180*asin((Fatc + Fres)/(10*m))/pi]"
             }
         },
         "Plano inclinado atrito cinético": {
@@ -1846,6 +2104,12 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fatc": "[-m*(a + 10*sin(pi*alpha/180))]",
+                "m": "[-Fatc/(a + 10*sin(pi*alpha/180))]",
+                "a": "[-Fatc/m - 10*sin(pi*alpha/180)]",
+                "alpha": "[-180*asin((Fatc + a*m)/(10*m))/pi, 180*asin(Fatc/(10*m) + a/10)/pi + 180]"
             }
         },
         "Plano inclinado atrito cinético coeficiente": {
@@ -1854,7 +2118,6 @@
             "variables": [
                 "a",
                 "mu",
-                "alpha",
                 "alpha"
             ],
             "quantities": {
@@ -1881,6 +2144,11 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "a": "[10*mu*cos(pi*alpha/180) - 10*sin(pi*alpha/180)]",
+                "mu": "[(a/10 + sin(pi*alpha/180))/cos(pi*alpha/180)]",
+                "alpha": "[360*atan((sqrt(-a**2 + 100*mu**2 + 100) - 10)/(a + 10*mu))/pi, -360*atan((sqrt(-a**2 + 100*mu**2 + 100) + 10)/(a + 10*mu))/pi]"
             }
         },
         "Plano inclinado atrito cinético resultante difícil": {
@@ -1890,7 +2158,6 @@
                 "Fres",
                 "m",
                 "mu",
-                "alpha",
                 "alpha"
             ],
             "quantities": {
@@ -1924,6 +2191,12 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fres": "[10*m*(mu*cos(pi*alpha/180) - sin(pi*alpha/180))]",
+                "m": "[Fres/(10*(mu*cos(pi*alpha/180) - sin(pi*alpha/180)))]",
+                "mu": "[(Fres/10 + m*sin(pi*alpha/180))/(m*cos(pi*alpha/180))]",
+                "alpha": "[-360*atan((10*m - sqrt(-Fres**2 + 100*m**2*mu**2 + 100*m**2))/(Fres + 10*m*mu))/pi, -360*atan((10*m + sqrt(-Fres**2 + 100*m**2*mu**2 + 100*m**2))/(Fres + 10*m*mu))/pi]"
             }
         },
         "Sistema 2 resultante": {
@@ -1966,6 +2239,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fressis": "[asis*(ma + mb)]",
+                "asis": "[Fressis/(ma + mb)]",
+                "ma": "[Fressis/asis - mb]",
+                "mb": "[Fressis/asis - ma]"
             }
         },
         "Sistema 2 interação": {
@@ -1975,7 +2254,6 @@
                 "F",
                 "mb",
                 "ma",
-                "mb",
                 "Fab"
             ],
             "quantities": {
@@ -2009,6 +2287,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fab*(ma + mb)/mb]",
+                "mb": "[Fab*ma/(F - Fab)]",
+                "ma": "[mb*(F - Fab)/Fab]",
+                "Fab": "[F*mb/(ma + mb)]"
             }
         },
         "Sistema 2 força a": {
@@ -2016,7 +2300,6 @@
             "problem": "Uma força horizontal é aplicada sobre um sistema de dois corpos. Sabe-se que:",
             "variables": [
                 "F",
-                "ma",
                 "ma",
                 "mb",
                 "Fa"
@@ -2052,6 +2335,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fa*(ma + mb)/ma]",
+                "ma": "[Fa*mb/(F - Fa)]",
+                "mb": "[ma*(F - Fa)/Fa]",
+                "Fa": "[F*ma/(ma + mb)]"
             }
         },
         "Sistema 3 resultante": {
@@ -2102,6 +2391,13 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fressis": "[asis*(ma + mb + mc)]",
+                "asis": "[Fressis/(ma + mb + mc)]",
+                "ma": "[Fressis/asis - mb - mc]",
+                "mb": "[Fressis/asis - ma - mc]",
+                "mc": "[Fressis/asis - ma - mb]"
             }
         },
         "Sistema 3 força a": {
@@ -2109,7 +2405,6 @@
             "problem": "Uma força horizontal é aplicada sobre um sistema de três corpos. Sabe-se que:",
             "variables": [
                 "F",
-                "ma",
                 "ma",
                 "mb",
                 "mc",
@@ -2153,6 +2448,13 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fa*(ma + mb + mc)/ma]",
+                "ma": "[Fa*(mb + mc)/(F - Fa)]",
+                "mb": "[F*ma/Fa - ma - mc]",
+                "mc": "[F*ma/Fa - ma - mb]",
+                "Fa": "[F*ma/(ma + mb + mc)]"
             }
         },
         "Sistema 3 força b": {
@@ -2162,7 +2464,6 @@
                 "F",
                 "mb",
                 "ma",
-                "mb",
                 "mc",
                 "Fb"
             ],
@@ -2204,6 +2505,13 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fb*(ma + mb + mc)/mb]",
+                "mb": "[Fb*(ma + mc)/(F - Fb)]",
+                "ma": "[F*mb/Fb - mb - mc]",
+                "mc": "[F*mb/Fb - ma - mb]",
+                "Fb": "[F*mb/(ma + mb + mc)]"
             }
         },
         "Sistema 3 força c": {
@@ -2214,7 +2522,6 @@
                 "mc",
                 "ma",
                 "mb",
-                "mc",
                 "Fc"
             ],
             "quantities": {
@@ -2255,6 +2562,13 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fc*(ma + mb + mc)/mc]",
+                "mc": "[Fc*(ma + mb)/(F - Fc)]",
+                "ma": "[F*mc/Fc - mb - mc]",
+                "mb": "[F*mc/Fc - ma - mc]",
+                "Fc": "[F*mc/(ma + mb + mc)]"
             }
         },
         "Sistema 3 força ab": {
@@ -2263,10 +2577,8 @@
             "variables": [
                 "F",
                 "ma",
-                "ma",
                 "mb",
                 "mc",
-                "F",
                 "Fab"
             ],
             "quantities": {
@@ -2307,6 +2619,13 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[Fab*(ma + mb + mc)/(mb + mc)]",
+                "ma": "[(F*mb + F*mc - Fab*(mb + mc))/Fab]",
+                "mb": "[(-F*mc + Fab*ma + Fab*mc)/(F - Fab)]",
+                "mc": "[(-F*mb + Fab*ma + Fab*mb)/(F - Fab)]",
+                "Fab": "[F*(mb + mc)/(ma + mb + mc)]"
             }
         },
         "Atwood sem atrito sistema": {
@@ -2315,7 +2634,6 @@
             "variables": [
                 "asis",
                 "ma",
-                "mb",
                 "mb"
             ],
             "quantities": {
@@ -2342,6 +2660,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "asis": "[10*mb/(ma + mb)]",
+                "ma": "[mb*(10 - asis)/asis]",
+                "mb": "[-asis*ma/(asis - 10)]"
             }
         },
         "Atwood sem atrito tração": {
@@ -2376,6 +2699,11 @@
                     "maxLimit": 20,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "T": "[mb*(10 - asis)]",
+                "mb": "[-T/(asis - 10)]",
+                "asis": "[-T/mb + 10]"
             }
         },
         "Atwood atrito estático": {
@@ -2402,6 +2730,10 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fate": "[10*mb]",
+                "mb": "[Fate/10]"
             }
         },
         "Atwood atrito estático tração": {
@@ -2428,6 +2760,10 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "T": "[10*mb]",
+                "mb": "[T/10]"
             }
         },
         "Atwood atrito estático coeficiente": {
@@ -2462,6 +2798,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "ma": "[mb/mu]",
+                "mu": "[mb/ma]",
+                "mb": "[ma*mu]"
             }
         },
         "Atwood atrito": {
@@ -2496,6 +2837,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fata": "[-Fressis + 10*mb]",
+                "Fressis": "[-Fata + 10*mb]",
+                "mb": "[Fata/10 + Fressis/10]"
             }
         },
         "Atwood atrito difícil": {
@@ -2538,6 +2884,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Fressis": "[10*ma*mu + 10*mb]",
+                "ma": "[(Fressis/10 - mb)/mu]",
+                "mu": "[(Fressis/10 - mb)/ma]",
+                "mb": "[Fressis/10 - ma*mu]"
             }
         },
         "Atwood atrito aceleração": {
@@ -2547,9 +2899,7 @@
                 "a",
                 "ma",
                 "mb",
-                "mu",
-                "ma",
-                "mb"
+                "mu"
             ],
             "quantities": {
                 "a": "aceleração do corpo",
@@ -2582,6 +2932,12 @@
                     "maxLimit": 30,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "a": "[10*mu*(-ma + mb)/(ma + mb)]",
+                "ma": "[mb*(-a + 10*mu)/(a + 10*mu)]",
+                "mb": "[-ma*(a + 10*mu)/(a - 10*mu)]",
+                "mu": "[-a*(ma + mb)/(10*ma - 10*mb)]"
             }
         },
         "Atwood tração": {
@@ -2591,11 +2947,7 @@
                 "mb",
                 "mu",
                 "ma",
-                "mb",
-                "T",
-                "mb",
-                "ma",
-                "mb"
+                "T"
             ],
             "quantities": {
                 "mb": "massa do corpo b",
@@ -2628,6 +2980,12 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "mb": "[(-T + 10*ma*mu + 10*ma - sqrt(T**2 - 60*T*ma*mu + 20*T*ma + 100*ma**2*mu**2 + 200*ma**2*mu + 100*ma**2))/(20*(mu - 1)), (-T + 10*ma*mu + 10*ma + sqrt(T**2 - 60*T*ma*mu + 20*T*ma + 100*ma**2*mu**2 + 200*ma**2*mu + 100*ma**2))/(20*(mu - 1))]",
+                "mu": "[(T*ma/10 + T*mb/10 - ma*mb - mb**2)/(mb*(ma - mb))]",
+                "ma": "[mb*(T + 10*mb*mu - 10*mb)/(-T + 10*mb*mu + 10*mb)]",
+                "T": "[10*mb*(ma*mu + ma - mb*mu + mb)/(ma + mb)]"
             }
         }
     },
@@ -2672,6 +3030,12 @@
                     "maxLimit": 12,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltaA1": "[deltaA2*deltat1/deltat2]",
+                "deltat1": "[deltaA1*deltat2/deltaA2]",
+                "deltaA2": "[deltaA1*deltat2/deltat1]",
+                "deltat2": "[deltaA2*deltat1/deltaA1]"
             }
         },
         "Terceira Lei de Kepler Sistema Solar": {
@@ -2698,6 +3062,10 @@
                     "maxLimit": 300,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Tk": "[-sqrt(Rm**3), sqrt(Rm**3)]",
+                "Rm": "[-(Tk**2)**(1/3)/2 - sqrt(3)*I*(Tk**2)**(1/3)/2, -(Tk**2)**(1/3)/2 + sqrt(3)*I*(Tk**2)**(1/3)/2, (Tk**2)**(1/3)]"
             }
         },
         "Terceira Lei de Kepler geral": {
@@ -2732,6 +3100,11 @@
                     "maxLimit": 300,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "K": "[Tk**2/Rm**3]",
+                "Tk": "[-sqrt(K*Rm**3), sqrt(K*Rm**3)]",
+                "Rm": "[(Tk**2/K)**(1/3), -(Tk**2/K)**(1/3)/2 - sqrt(3)*I*(Tk**2/K)**(1/3)/2, -(Tk**2/K)**(1/3)/2 + sqrt(3)*I*(Tk**2/K)**(1/3)/2]"
             }
         },
         "Lei da Gravitação Universal": {
@@ -2778,6 +3151,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Fg": "[6.67e-11*m1*m2/d**2]",
+                "m1": "[14992503748.1259*Fg*d**2/m2]",
+                "m2": "[14992503748.1259*Fg*d**2/m1]",
+                "d": "[-8.16700679563817e-6*sqrt(m1*m2/Fg), 8.16700679563817e-6*sqrt(m1*m2/Fg)]"
             }
         },
         "Lei da Gravitação Universal Terra": {
@@ -2816,6 +3195,11 @@
                     "minPower": 2,
                     "maxPower": 6
                 }
+            },
+            "equations": {
+                "Fg": "[9.7705078125*mc/(1.5625e-7*h + 1)**2]",
+                "mc": "[0.102348825587206*Fg*(1.5625e-7*h + 1)**2]",
+                "h": "[-6400000.0 - 20004999.3751562*sqrt(Fg*mc)/Fg, -6400000.0 + 20004999.3751562*sqrt(Fg*mc)/Fg]"
             }
         },
         "Campo gravitacional na superfície": {
@@ -2854,6 +3238,11 @@
                     "maxLimit": 200,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "M": "[14992503748.1259*R**2*g]",
+                "R": "[-8.16700679563817e-6*sqrt(M/g), 8.16700679563817e-6*sqrt(M/g)]",
+                "g": "[6.67e-11*M/R**2]"
             }
         },
         "Campo gravitacional da Terra": {
@@ -2882,6 +3271,10 @@
                     "minPower": 2,
                     "maxPower": 6
                 }
+            },
+            "equations": {
+                "gt": "[9.7705078125/(1.5625e-7*h + 1)**2]",
+                "h": "[-6400000.0 - 20004999.3751562/sqrt(gt), -6400000.0 + 20004999.3751562/sqrt(gt)]"
             }
         },
         "Velocidade Orbital": {
@@ -2920,6 +3313,11 @@
                     "minPower": 2,
                     "maxPower": 5
                 }
+            },
+            "equations": {
+                "vorb": "[8.16700679563817e-9*sqrt(M/Rorb)]",
+                "M": "[1.49925037481259e+16*Rorb*vorb**2]",
+                "Rorb": "[6.67000000000001e-17*M/vorb**2]"
             }
         },
         "Velocidade Orbital Terra": {
@@ -2946,13 +3344,16 @@
                     "maxLimit": 2000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "vorb": "[632.613626157388*sqrt(1/(horb + 6400.0))]",
+                "horb": "[-6400.0 + 400199.999999999/vorb**2]"
             }
         },
         "Período Orbital": {
             "equation": "Eq(-4082482.90463863*pi*Rorb*sqrt(Rorb/M) + Torb, 0)",
             "problem": "Um corpo orbita um corpo maior a uma distância da superfície muito menor que o raio do planeta. Sabe-se que:\n Constante universal de gravitação: 2.4x10^-16 km^3/hkg",
             "variables": [
-                "Rorb",
                 "Rorb",
                 "M",
                 "Torb"
@@ -2985,6 +3386,11 @@
                     "maxLimit": 50,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Rorb": "[1.82508810669052e-5*(M*Torb**2)**(1/3), -9.12544053345258e-6*(M*Torb**2)**(1/3) - 1.58057266453883e-5*I*(M*Torb**2)**(1/3), -9.12544053345258e-6*(M*Torb**2)**(1/3) + 1.58057266453883e-5*I*(M*Torb**2)**(1/3)]",
+                "M": "[164493406684823.0*Rorb**3/Torb**2]",
+                "Torb": "[12825498.3016186*Rorb*sqrt(Rorb/M)]"
             }
         },
         "Período Orbital Terra": {
@@ -2992,7 +3398,6 @@
             "problem": "Um corpo descreve uma órbita a uma altura h da superfície da Terra. Sabe-se que:\n Massa da Terra = 6x10^24 kg\n Raio da Terra = 6400 km\n Constante universal de gravitação: 2.4x10^-16 km^3/hkg",
             "variables": [
                 "Torb",
-                "horb",
                 "horb"
             ],
             "quantities": {
@@ -3012,6 +3417,10 @@
                     "maxLimit": 2000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Torb": "[84.7751532014601*(0.00015625*horb + 1)**(3/2)]",
+                "horb": "[]"
             }
         }
     },
@@ -3056,6 +3465,12 @@
                     "maxLimit": 70,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "T1": "[T2*cos(pi*theta2/180)/cos(pi*theta1/180)]",
+                "theta1": "[180*acos(T2*cos(pi*theta2/180)/T1)/pi, -180*acos(T2*cos(pi*theta2/180)/T1)/pi + 360]",
+                "T2": "[T1*cos(pi*theta1/180)/cos(pi*theta2/180)]",
+                "theta2": "[180*acos(T1*cos(pi*theta1/180)/T2)/pi, -180*acos(T1*cos(pi*theta1/180)/T2)/pi + 360]"
             }
         },
         "Equilíbrio de ponto material massa": {
@@ -3106,6 +3521,13 @@
                     "maxLimit": 300,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "T1": "[(-T2*sin(pi*theta2/180) + 10*m)/sin(pi*theta1/180)]",
+                "theta1": "[180*(asin((T2*sin(pi*theta2/180) - 10*m)/T1) + pi)/pi, -180*asin((T2*sin(pi*theta2/180) - 10*m)/T1)/pi]",
+                "T2": "[(-T1*sin(pi*theta1/180) + 10*m)/sin(pi*theta2/180)]",
+                "theta2": "[180*(asin((T1*sin(pi*theta1/180) - 10*m)/T2) + pi)/pi, -180*asin((T1*sin(pi*theta1/180) - 10*m)/T2)/pi]",
+                "m": "[T1*sin(pi*theta1/180)/10 + T2*sin(pi*theta2/180)/10]"
             }
         },
         "Torque": {
@@ -3148,6 +3570,12 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[tau/(d*sin(pi*theta/180))]",
+                "d": "[tau/(F*sin(pi*theta/180))]",
+                "theta": "[180*asin(tau/(F*d))/pi, -180*asin(tau/(F*d))/pi + 180]",
+                "tau": "[F*d*sin(pi*theta/180)]"
             }
         },
         "Sistema Torque": {
@@ -3190,6 +3618,12 @@
                     "maxLimit": 500,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "tau1": "[-tau2 - tau3 + taures]",
+                "tau2": "[-tau1 - tau3 + taures]",
+                "tau3": "[-tau1 - tau2 + taures]",
+                "taures": "[tau1 + tau2 + tau3]"
             }
         },
         "Sistema Torque equilíbrio": {
@@ -3224,6 +3658,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "tau1": "[-tau2 - tau3]",
+                "tau2": "[-tau1 - tau3]",
+                "tau3": "[-tau1 - tau2]"
             }
         },
         "Sistema Torque forças": {
@@ -3282,6 +3721,14 @@
                     "maxLimit": 40,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "F1": "[-(F2*d2 + F3*d3)/d1]",
+                "d1": "[-(F2*d2 + F3*d3)/F1]",
+                "F2": "[-(F1*d1 + F3*d3)/d2]",
+                "d2": "[-(F1*d1 + F3*d3)/F2]",
+                "F3": "[-(F1*d1 + F2*d2)/d3]",
+                "d3": "[-(F1*d1 + F2*d2)/F3]"
             }
         },
         "Sistema Torque forças ângulo": {
@@ -3348,6 +3795,15 @@
                     "maxLimit": 500,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F1": "[(-F2*d2*sin(pi*theta2/180) + taures)/(d1*sin(pi*theta1/180))]",
+                "d1": "[(-F2*d2*sin(pi*theta2/180) + taures)/(F1*sin(pi*theta1/180))]",
+                "theta1": "[180*(asin((F2*d2*sin(pi*theta2/180) - taures)/(F1*d1)) + pi)/pi, -180*asin((F2*d2*sin(pi*theta2/180) - taures)/(F1*d1))/pi]",
+                "F2": "[(-F1*d1*sin(pi*theta1/180) + taures)/(d2*sin(pi*theta2/180))]",
+                "d2": "[(-F1*d1*sin(pi*theta1/180) + taures)/(F2*sin(pi*theta2/180))]",
+                "theta2": "[180*(asin((F1*d1*sin(pi*theta1/180) - taures)/(F2*d2)) + pi)/pi, -180*asin((F1*d1*sin(pi*theta1/180) - taures)/(F2*d2))/pi]",
+                "taures": "[F1*d1*sin(pi*theta1/180) + F2*d2*sin(pi*theta2/180)]"
             }
         },
         "Equilíbrio barra eixo": {
@@ -3357,12 +3813,7 @@
                 "axis",
                 "mb",
                 "lb",
-                "axis",
-                "m",
-                "mb",
-                "axis",
-                "lb",
-                "lb"
+                "m"
             ],
             "quantities": {
                 "axis": "Distância da extremidade esquerda da barra ao eixo",
@@ -3395,6 +3846,12 @@
                     "maxLimit": 300,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "axis": "[(-2*lb*m - mb + sqrt(4*lb**2*m**2 + 4*lb*m*mb + 4*lb*mb**2 + mb**2))/(2*mb), -(2*lb*m + mb + sqrt(4*lb**2*m**2 + 4*lb*m*mb + 4*lb*mb**2 + mb**2))/(2*mb)]",
+                "mb": "[-2*axis*lb*m/(axis**2 + axis - lb)]",
+                "lb": "[-axis*mb*(axis + 1)/(2*axis*m - mb)]",
+                "m": "[mb*(-axis**2 - axis + lb)/(2*axis*lb)]"
             }
         },
         "Gangorra": {
@@ -3437,6 +3894,12 @@
                     "maxLimit": 40,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "d1": "[d2*m2/m1]",
+                "m1": "[d2*m2/d1]",
+                "d2": "[d1*m1/m2]",
+                "m2": "[d1*m1/d2]"
             }
         }
     },
@@ -3473,6 +3936,11 @@
                     "maxLimit": 100,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "p": "[F/A]",
+                "F": "[A*p]",
+                "A": "[F/p]"
             }
         },
         "Pascal - atm": {
@@ -3499,6 +3967,10 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "pPa": "[100000.0*patm]",
+                "patm": "[1.0e-5*pPa]"
             }
         },
         "Pascal - cmHg": {
@@ -3525,6 +3997,10 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "pPa": "[1315.78947368421*pcmHg]",
+                "pcmHg": "[0.00076*pPa]"
             }
         },
         "Pascal - psi": {
@@ -3551,6 +4027,10 @@
                     "maxLimit": 200,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "pPa": "[7142.85714285714*ppsi]",
+                "ppsi": "[0.00014*pPa]"
             }
         },
         "atm - cmHg": {
@@ -3577,6 +4057,10 @@
                     "maxLimit": 1000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "patm": "[pcmHg/76]",
+                "pcmHg": "[76*patm]"
             }
         },
         "atm - psi": {
@@ -3603,6 +4087,10 @@
                     "maxLimit": 200,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "patm": "[ppsi/14]",
+                "ppsi": "[14*patm]"
             }
         },
         "cmHg - psi": {
@@ -3629,6 +4117,10 @@
                     "maxLimit": 200,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "pcmHg": "[38*ppsi/7]",
+                "ppsi": "[7*pcmHg/38]"
             }
         },
         "Densidade": {
@@ -3663,6 +4155,11 @@
                     "maxLimit": 100,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "rho": "[m/V]",
+                "m": "[V*rho]",
+                "V": "[m/rho]"
             }
         },
         "Pressão mergulho": {
@@ -3689,6 +4186,10 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "h": "[]",
+                "phatm": "[h/10 + 1]"
             }
         },
         "Pressão hidrostática": {
@@ -3723,6 +4224,11 @@
                     "maxLimit": 100000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "d": "[ph/(10*h)]",
+                "h": "[]",
+                "ph": "[10*d*h]"
             }
         },
         "Pressão total": {
@@ -3757,6 +4263,11 @@
                     "maxLimit": 1000000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "d": "[0.1*(pt - 100000.0)/h]",
+                "h": "[]",
+                "pt": "[10.0*d*h + 100000.0]"
             }
         },
         "Princípio de Pascal": {
@@ -3799,6 +4310,12 @@
                     "maxLimit": 50,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "F2": "[A2*F1/A1]",
+                "A2": "[A1*F2/F1]",
+                "F1": "[A1*F2/A2]",
+                "A1": "[A2*F1/F2]"
             }
         },
         "Princípio de Pascal pressão": {
@@ -3833,6 +4350,11 @@
                     "maxLimit": 200,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "p1": "[F2/A2]",
+                "F2": "[A2*p1]",
+                "A2": "[F2/p1]"
             }
         },
         "Líquidos imiscíveis": {
@@ -3875,6 +4397,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "da": "[db*hb/ha]",
+                "ha": "[db*hb/da]",
+                "db": "[da*ha/hb]",
+                "hb": "[da*ha/db]"
             }
         },
         "Empuxo": {
@@ -3909,6 +4437,11 @@
                     "maxLimit": 5000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "E": "[10*Vd*d]",
+                "Vd": "[E/(10*d)]",
+                "d": "[E/(10*Vd)]"
             }
         },
         "Empuxo no fundo": {
@@ -3951,6 +4484,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Normal": "[-10*V*d + 10*m]",
+                "V": "[(-Normal/10 + m)/d]",
+                "d": "[(-Normal/10 + m)/V]",
+                "m": "[Normal/10 + V*d]"
             }
         },
         "Empuxo equilíbrio": {
@@ -3985,6 +4524,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "V": "[m/d]",
+                "d": "[m/V]",
+                "m": "[V*d]"
             }
         },
         "Empuxo boiando": {
@@ -4019,6 +4563,11 @@
                     "maxLimit": 5000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "pct": "[100*rho/d]",
+                "rho": "[d*pct/100]",
+                "d": "[100*rho/pct]"
             }
         },
         "Empuxo boiando massa": {
@@ -4061,6 +4610,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "V": "[100*m/(d*pct)]",
+                "d": "[100*m/(V*pct)]",
+                "pct": "[100*m/(V*d)]",
+                "m": "[V*d*pct/100]"
             }
         }
     },
@@ -4105,6 +4660,12 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[tau/(deltaS*cos(pi*theta/180))]",
+                "deltaS": "[tau/(F*cos(pi*theta/180))]",
+                "theta": "[180*acos(tau/(F*deltaS))/pi, -180*acos(tau/(F*deltaS))/pi + 360]",
+                "tau": "[]"
             }
         },
         "Trabalho total": {
@@ -4147,6 +4708,12 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "tau1": "[]",
+                "tau2": "[]",
+                "tau3": "[]",
+                "taut": "[]"
             }
         },
         "Trabalho da força resultante": {
@@ -4221,6 +4788,16 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltaS": "[tau/(F1*cos(pi*theta1/180) + F2*cos(pi*theta2/180) + F3*cos(pi*theta3/180))]",
+                "F1": "[(-deltaS*(F2*cos(pi*theta2/180) + F3*cos(pi*theta3/180)) + tau)/(deltaS*cos(pi*theta1/180))]",
+                "theta1": "[180*(-acos((-F2*cos(pi*theta2/180) - F3*cos(pi*theta3/180) + tau/deltaS)/F1) + 2*pi)/pi, 180*acos((-F2*cos(pi*theta2/180) - F3*cos(pi*theta3/180) + tau/deltaS)/F1)/pi]",
+                "F2": "[(-deltaS*(F1*cos(pi*theta1/180) + F3*cos(pi*theta3/180)) + tau)/(deltaS*cos(pi*theta2/180))]",
+                "theta2": "[180*(-acos((-F1*cos(pi*theta1/180) - F3*cos(pi*theta3/180) + tau/deltaS)/F2) + 2*pi)/pi, 180*acos((-F1*cos(pi*theta1/180) - F3*cos(pi*theta3/180) + tau/deltaS)/F2)/pi]",
+                "F3": "[(-deltaS*(F1*cos(pi*theta1/180) + F2*cos(pi*theta2/180)) + tau)/(deltaS*cos(pi*theta3/180))]",
+                "theta3": "[]",
+                "tau": "[]"
             }
         },
         "Trabalho trajetória": {
@@ -4230,10 +4807,8 @@
                 "F",
                 "deltaS1",
                 "theta1",
-                "F",
                 "deltaS2",
                 "theta2",
-                "F",
                 "deltaS3",
                 "theta3",
                 "tau"
@@ -4297,6 +4872,16 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[tau/(deltaS1*cos(pi*theta1/180) + deltaS2*cos(pi*theta2/180) + deltaS3*cos(pi*theta3/180))]",
+                "deltaS1": "[]",
+                "theta1": "[180*(-acos((-deltaS2*cos(pi*theta2/180) - deltaS3*cos(pi*theta3/180) + tau/F)/deltaS1) + 2*pi)/pi, 180*acos((-deltaS2*cos(pi*theta2/180) - deltaS3*cos(pi*theta3/180) + tau/F)/deltaS1)/pi]",
+                "deltaS2": "[]",
+                "theta2": "[180*(-acos((-deltaS1*cos(pi*theta1/180) - deltaS3*cos(pi*theta3/180) + tau/F)/deltaS2) + 2*pi)/pi, 180*acos((-deltaS1*cos(pi*theta1/180) - deltaS3*cos(pi*theta3/180) + tau/F)/deltaS2)/pi]",
+                "deltaS3": "[]",
+                "theta3": "[]",
+                "tau": "[]"
             }
         },
         "Potência trabalho": {
@@ -4331,6 +4916,11 @@
                     "maxLimit": 50,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "P": "[taut/deltat]",
+                "taut": "[]",
+                "deltat": "[taut/P]"
             }
         },
         "Potência Força": {
@@ -4365,6 +4955,11 @@
                     "maxLimit": 500,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[P/v]",
+                "v": "[P/F]",
+                "P": "[F*v]"
             }
         },
         "Rendimento trabalho": {
@@ -4399,6 +4994,11 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "eta": "[]",
+                "taud": "[]",
+                "taut": "[]"
             }
         },
         "Rendimento Potência": {
@@ -4433,6 +5033,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Pd": "[]",
+                "Pt": "[]",
+                "eta": "[]"
             }
         },
         "Energia Cinética": {
@@ -4467,6 +5072,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Ec": "[]",
+                "m": "[2.0*Ec/v**2]",
+                "v": "[-1.4142135623731*sqrt(Ec/m), 1.4142135623731*sqrt(Ec/m)]"
             }
         },
         "Trabalho e Energia": {
@@ -4509,6 +5119,12 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "m": "[2.0*tau/(vf**2 - vi**2)]",
+                "vf": "[-1.4142135623731*sqrt(0.5*vi**2 + tau/m), 1.4142135623731*sqrt(0.5*vi**2 + tau/m)]",
+                "vi": "[]",
+                "tau": "[]"
             }
         },
         "Trabalho e Energia 2": {
@@ -4559,6 +5175,13 @@
                     "maxLimit": 30,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "F": "[0.5*m*(v**2 - v0**2)/deltaS]",
+                "deltaS": "[0.5*m*(v**2 - v0**2)/F]",
+                "m": "[2.0*F*deltaS/(v**2 - v0**2)]",
+                "v": "[-1.4142135623731*sqrt(F*deltaS/m + 0.5*v0**2), 1.4142135623731*sqrt(F*deltaS/m + 0.5*v0**2)]",
+                "v0": "[-1.4142135623731*sqrt(-F*deltaS/m + 0.5*v**2), 1.4142135623731*sqrt(-F*deltaS/m + 0.5*v**2)]"
             }
         },
         "Energia Potencial Gravitacional": {
@@ -4593,6 +5216,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Epg": "[]",
+                "h": "[Epg/(10*m)]",
+                "m": "[Epg/(10*h)]"
             }
         },
         "Energia Potencial Elástica": {
@@ -4627,6 +5255,11 @@
                     "maxLimit": 100,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "Epe": "[]",
+                "k": "[2.0*Epe/x**2]",
+                "x": "[-1.4142135623731*sqrt(Epe/k), 1.4142135623731*sqrt(Epe/k)]"
             }
         },
         "Conservação de Energia": {
@@ -4653,6 +5286,10 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "h": "[0.05*v**2]",
+                "v": "[-4.47213595499958*sqrt(h), 4.47213595499958*sqrt(h)]"
             }
         },
         "Conservação de Energia 2": {
@@ -4695,6 +5332,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "k": "[m*v**2/x**2]",
+                "x": "[-v*sqrt(m/k), v*sqrt(m/k)]",
+                "m": "[k*x**2/v**2]",
+                "v": "[-x*sqrt(k/m), x*sqrt(k/m)]"
             }
         },
         "Conservação de Energia 3": {
@@ -4737,6 +5380,12 @@
                     "maxLimit": 100,
                     "factor": 100
                 }
+            },
+            "equations": {
+                "h": "[0.05*k*x**2/m]",
+                "m": "[0.05*k*x**2/h]",
+                "k": "[20.0*h*m/x**2]",
+                "x": "[-4.47213595499958*sqrt(h*m/k), 4.47213595499958*sqrt(h*m/k)]"
             }
         },
         "Conservação de Energia 4": {
@@ -4779,6 +5428,12 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Ecf": "[]",
+                "Eci": "[]",
+                "Epf": "[]",
+                "Epi": "[]"
             }
         },
         "Conservação de energia 5": {
@@ -4821,6 +5476,12 @@
                     "maxLimit": 200,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "hf": "[]",
+                "hi": "[]",
+                "vf": "[-4.47213595499958*sqrt(-hf + hi + 0.05*vi**2), 4.47213595499958*sqrt(-hf + hi + 0.05*vi**2)]",
+                "vi": "[]"
             }
         }
     },
@@ -4857,6 +5518,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Q": "[m*v]",
+                "m": "[Q/v]",
+                "v": "[Q/m]"
             }
         },
         "Colisão inelástica": {
@@ -4866,7 +5532,6 @@
                 "m1",
                 "v1",
                 "vf",
-                "m1",
                 "m2"
             ],
             "quantities": {
@@ -4900,6 +5565,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "m1": "[m2*vf/(v1 - vf)]",
+                "v1": "[vf*(m1 + m2)/m1]",
+                "vf": "[m1*v1/(m1 + m2)]",
+                "m2": "[m1*(v1 - vf)/vf]"
             }
         },
         "Conservação do momento": {
@@ -4908,11 +5579,9 @@
             "variables": [
                 "m1",
                 "v1f",
-                "m1",
                 "v1i",
                 "m2",
                 "v2f",
-                "m2",
                 "v2i"
             ],
             "quantities": {
@@ -4960,6 +5629,14 @@
                     "maxLimit": -1,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "m1": "[m2*(-v2f + v2i)/(v1f - v1i)]",
+                "v1f": "[(m1*v1i - m2*v2f + m2*v2i)/m1]",
+                "v1i": "[(m1*v1f + m2*v2f - m2*v2i)/m1]",
+                "m2": "[m1*(-v1f + v1i)/(v2f - v2i)]",
+                "v2f": "[(-m1*v1f + m1*v1i + m2*v2i)/m2]",
+                "v2i": "[(m1*v1f - m1*v1i + m2*v2f)/m2]"
             }
         },
         "Colisão elástica 1": {
@@ -4969,9 +5646,7 @@
                 "v1f",
                 "m1",
                 "m2",
-                "v1i",
-                "m1",
-                "m2"
+                "v1i"
             ],
             "quantities": {
                 "v1f": "Velocidade final do corpo 1",
@@ -5004,6 +5679,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "v1f": "[v1i*(m1 - m2)/(m1 + m2)]",
+                "m1": "[-m2*(v1f + v1i)/(v1f - v1i)]",
+                "m2": "[m1*(-v1f + v1i)/(v1f + v1i)]",
+                "v1i": "[v1f*(m1 + m2)/(m1 - m2)]"
             }
         },
         "Colisão elástica 2": {
@@ -5013,7 +5694,6 @@
                 "m1",
                 "v1i",
                 "v2f",
-                "m1",
                 "m2"
             ],
             "quantities": {
@@ -5047,6 +5727,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "m1": "[m2*v2f/(2*v1i - v2f)]",
+                "v1i": "[v2f*(m1 + m2)/(2*m1)]",
+                "v2f": "[2*m1*v1i/(m1 + m2)]",
+                "m2": "[m1*(2*v1i - v2f)/v2f]"
             }
         },
         "Colisão elástica 3": {
@@ -5057,10 +5743,7 @@
                 "m2",
                 "v1i",
                 "v2i",
-                "m1",
-                "m2",
                 "v1f",
-                "v1i",
                 "v2f"
             ],
             "quantities": {
@@ -5108,6 +5791,14 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "m1": "[m2*(-v1f - 2*v1i + v2f + v2i)/(v1f - v2f + v2i)]",
+                "m2": "[m1*(-v1f + v2f - v2i)/(v1f + 2*v1i - v2f - v2i)]",
+                "v1i": "[(-m1*v1f + m1*v2f - m1*v2i + m2*(-v1f + v2f + v2i))/(2*m2)]",
+                "v2i": "[(-m1*v1f + m1*v2f - m2*v1f - 2*m2*v1i + m2*v2f)/(m1 - m2)]",
+                "v1f": "[(m1*v2f - m1*v2i - 2*m2*v1i + m2*v2f + m2*v2i)/(m1 + m2)]",
+                "v2f": "[(m1*v1f + m1*v2i + m2*v1f + 2*m2*v1i - m2*v2i)/(m1 + m2)]"
             }
         },
         "Colisão elástica 4": {
@@ -5117,10 +5808,8 @@
                 "m1",
                 "v1i",
                 "v2i",
-                "m1",
                 "m2",
-                "v2f",
-                "v2i"
+                "v2f"
             ],
             "quantities": {
                 "m1": "Massa do corpo 1",
@@ -5160,6 +5849,13 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "m1": "[m2*(-v2f + v2i)/(-2*v1i + v2f + v2i)]",
+                "v1i": "[(m1*(v2f + v2i) + m2*v2f - m2*v2i)/(2*m1)]",
+                "v2i": "[(2*m1*v1i - m1*v2f - m2*v2f)/(m1 - m2)]",
+                "m2": "[m1*(2*v1i - v2f - v2i)/(v2f - v2i)]",
+                "v2f": "[(2*m1*v1i - m1*v2i + m2*v2i)/(m1 + m2)]"
             }
         },
         "Momento 2D 1": {
@@ -5169,7 +5865,6 @@
                 "m1",
                 "v1",
                 "vf",
-                "m1",
                 "m2",
                 "theta"
             ],
@@ -5211,6 +5906,13 @@
                     "maxLimit": 90,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "m1": "[m2*vf*cos(pi*theta/180)/(v1 - vf*cos(pi*theta/180))]",
+                "v1": "[vf*(m1 + m2)*cos(pi*theta/180)/m1]",
+                "vf": "[m1*v1/((m1 + m2)*cos(pi*theta/180))]",
+                "m2": "[m1*(v1/cos(pi*theta/180) - vf)/vf]",
+                "theta": "[180*(-acos(m1*v1/(vf*(m1 + m2))) + 2*pi)/pi, 180*acos(m1*v1/(vf*(m1 + m2)))/pi]"
             }
         },
         "Momento 2D 2": {
@@ -5261,6 +5963,13 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "theta": "[180*atan(m2*v1*v2/m1)/pi]",
+                "m2": "[m1*tan(pi*theta/180)/(v1*v2)]",
+                "v1": "[m1*tan(pi*theta/180)/(m2*v2)]",
+                "v2": "[m1*tan(pi*theta/180)/(m2*v1)]",
+                "m1": "[m2*v1*v2/tan(pi*theta/180)]"
             }
         },
         "Impulso 1": {
@@ -5295,6 +6004,11 @@
                     "maxLimit": 200,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[I/deltat]",
+                "deltat": "[I/F]",
+                "I": "[F*deltat]"
             }
         },
         "Impulso 2": {
@@ -5329,6 +6043,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "I": "[Qf - Qi]",
+                "Qf": "[I + Qi]",
+                "Qi": "[-I + Qf]"
             }
         },
         "Impulso 3": {
@@ -5371,6 +6090,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "F": "[(Qf - Qi)/deltat]",
+                "deltat": "[(Qf - Qi)/F]",
+                "Qf": "[F*deltat + Qi]",
+                "Qi": "[-F*deltat + Qf]"
             }
         }
     },
@@ -5399,6 +6124,10 @@
                     "maxLimit": 300,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "TC": "[5*TF/9 - 160/9]",
+                "TF": "[9*TC/5 + 32]"
             }
         },
         "Celsius/Kelvin": {
@@ -5425,6 +6154,10 @@
                     "maxLimit": 600,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "TC": "[TK - 273]",
+                "TK": "[TC + 273]"
             }
         },
         "Farenheit/Kelvin": {
@@ -5451,6 +6184,10 @@
                     "maxLimit": 600,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "TF": "[9*TK/5 - 2297/5]",
+                "TK": "[5*TF/9 + 2297/9]"
             }
         },
         "Conversão genérica Celsius": {
@@ -5460,8 +6197,7 @@
                 "TK",
                 "Fx",
                 "Tx",
-                "Ex",
-                "Fx"
+                "Ex"
             ],
             "quantities": {
                 "TK": "Temperatura em Kelvin",
@@ -5494,6 +6230,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "TK": "[(273*Ex - 373*Fx + 100*Tx)/(Ex - Fx)]",
+                "Fx": "[(Ex*TK - 273*Ex - 100*Tx)/(TK - 373)]",
+                "Tx": "[Ex*TK/100 - 273*Ex/100 - Fx*TK/100 + 373*Fx/100]",
+                "Ex": "[(Fx*TK - 373*Fx + 100*Tx)/(TK - 273)]"
             }
         },
         "Conversão genérica Farenheit": {
@@ -5503,8 +6245,7 @@
                 "TF",
                 "Fx",
                 "Tx",
-                "Ex",
-                "Fx"
+                "Ex"
             ],
             "quantities": {
                 "TF": "Temperatura em graus Farenheit",
@@ -5537,6 +6278,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "TF": "[4*(8*Ex - 53*Fx + 45*Tx)/(Ex - Fx)]",
+                "Fx": "[(Ex*TF - 32*Ex - 180*Tx)/(TF - 212)]",
+                "Tx": "[Ex*TF/180 - 8*Ex/45 - Fx*TF/180 + 53*Fx/45]",
+                "Ex": "[(Fx*TF - 212*Fx + 180*Tx)/(TF - 32)]"
             }
         },
         "Dilatação linear 1": {
@@ -5585,6 +6332,12 @@
                     "minPower": -4,
                     "maxPower": -1
                 }
+            },
+            "equations": {
+                "L0": "[deltaL/(alpha*deltaT)]",
+                "alpha": "[deltaL/(L0*deltaT)]",
+                "deltaT": "[deltaL/(L0*alpha)]",
+                "deltaL": "[L0*alpha*deltaT]"
             }
         },
         "Dilatação linear 2": {
@@ -5631,6 +6384,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "L": "[L0*(alpha*deltaT + 1)]",
+                "L0": "[L/(alpha*deltaT + 1)]",
+                "alpha": "[(L - L0)/(L0*deltaT)]",
+                "deltaT": "[(L - L0)/(L0*alpha)]"
             }
         },
         "Dilatação superficial 1": {
@@ -5677,6 +6436,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "A0": "[deltaA/(beta*deltaT)]",
+                "beta": "[deltaA/(A0*deltaT)]",
+                "deltaT": "[deltaA/(A0*beta)]",
+                "deltaA": "[A0*beta*deltaT]"
             }
         },
         "Dilatação superficial 2": {
@@ -5724,6 +6489,12 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "A": "[A0*(beta*deltaT + 1)]",
+                "A0": "[A/(beta*deltaT + 1)]",
+                "beta": "[(A - A0)/(A0*deltaT)]",
+                "deltaT": "[(A - A0)/(A0*beta)]"
             }
         },
         "Dilatação superficial 3": {
@@ -5770,6 +6541,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "A0": "[deltaA/(2*alpha*deltaT)]",
+                "alpha": "[deltaA/(2*A0*deltaT)]",
+                "deltaT": "[deltaA/(2*A0*alpha)]",
+                "deltaA": "[2*A0*alpha*deltaT]"
             }
         },
         "Dilatação volumétrica 1": {
@@ -5816,6 +6593,12 @@
                     "maxLimit": 10,
                     "factor": -2
                 }
+            },
+            "equations": {
+                "V0": "[deltaV/(deltaT*gamma)]",
+                "deltaT": "[deltaV/(V0*gamma)]",
+                "gamma": "[deltaV/(V0*deltaT)]",
+                "deltaV": "[V0*deltaT*gamma]"
             }
         },
         "Dilatação volumétrica 2": {
@@ -5854,6 +6637,11 @@
                     "minPower": -6,
                     "maxPower": -5
                 }
+            },
+            "equations": {
+                "V0": "[V/(deltaT*gamma + 1)]",
+                "deltaT": "[(V - V0)/(V0*gamma)]",
+                "gamma": "[(V - V0)/(V0*deltaT)]"
             }
         },
         "Dilatação volumétrica 3": {
@@ -5900,6 +6688,12 @@
                     "maxLimit": 10,
                     "factor": -2
                 }
+            },
+            "equations": {
+                "V0": "[deltaV/(3*alpha*deltaT)]",
+                "alpha": "[deltaV/(3*V0*deltaT)]",
+                "deltaT": "[deltaV/(3*V0*alpha)]",
+                "deltaV": "[3*V0*alpha*deltaT]"
             }
         },
         "Dilatação líquidos 1": {
@@ -5946,6 +6740,12 @@
                     "minPower": -2,
                     "maxPower": 1
                 }
+            },
+            "equations": {
+                "Vliq": "[deltaVliq/(deltaT*gammaliq)]",
+                "deltaT": "[deltaVliq/(Vliq*gammaliq)]",
+                "gammaliq": "[deltaVliq/(Vliq*deltaT)]",
+                "deltaVliq": "[Vliq*deltaT*gammaliq]"
             }
         },
         "Dilatação líquidos 2": {
@@ -5984,6 +6784,11 @@
                     "minPower": -2,
                     "maxPower": 1
                 }
+            },
+            "equations": {
+                "Vap": "[-Vrec + deltaVliq]",
+                "Vrec": "[-Vap + deltaVliq]",
+                "deltaVliq": "[Vap + Vrec]"
             }
         },
         "Dilatação líquidos 3": {
@@ -5993,8 +6798,6 @@
                 "Vliq",
                 "deltaT",
                 "Vap",
-                "Vliq",
-                "deltaT",
                 "gammarec",
                 "deltaVliq"
             ],
@@ -6042,6 +6845,13 @@
                     "minPower": -2,
                     "maxPower": 1
                 }
+            },
+            "equations": {
+                "Vliq": "[(-Vap + deltaVliq)/(deltaT*gammarec)]",
+                "deltaT": "[(-Vap + deltaVliq)/(Vliq*gammarec)]",
+                "Vap": "[-Vliq*deltaT*gammarec + deltaVliq]",
+                "gammarec": "[(-Vap + deltaVliq)/(Vliq*deltaT)]",
+                "deltaVliq": "[Vap + Vliq*deltaT*gammarec]"
             }
         },
         "Capacidade térmica": {
@@ -6076,6 +6886,11 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "C": "[Q/deltaT]",
+                "Q": "[C*deltaT]",
+                "deltaT": "[Q/C]"
             }
         },
         "Calor específico": {
@@ -6118,6 +6933,12 @@
                     "maxLimit": 10000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Q": "[c*deltaT*m]",
+                "c": "[Q/(deltaT*m)]",
+                "deltaT": "[Q/(c*m)]",
+                "m": "[Q/(c*deltaT)]"
             }
         },
         "Calor latente": {
@@ -6152,6 +6973,11 @@
                     "maxLimit": 10000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "La": "[Q/m]",
+                "m": "[Q/La]",
+                "Q": "[La*m]"
             }
         },
         "Trocas de calor 1": {
@@ -6162,8 +6988,7 @@
                 "T0a",
                 "Tf",
                 "cb",
-                "T0b",
-                "Tf"
+                "T0b"
             ],
             "quantities": {
                 "ca": "Calor específico do corpo A",
@@ -6203,6 +7028,13 @@
                     "maxLimit": 50,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "ca": "[cb*mb*(T0b - Tf)/(ma*(T0a - Tf))]",
+                "T0a": "[(T0b*cb*mb + Tf*ca*ma - Tf*cb*mb)/(ca*ma)]",
+                "Tf": "[(T0a*ca*ma - T0b*cb*mb)/(ca*ma - cb*mb)]",
+                "cb": "[ca*ma*(T0a - Tf)/(mb*(T0b - Tf))]",
+                "T0b": "[(T0a*ca*ma - Tf*ca*ma + Tf*cb*mb)/(cb*mb)]"
             }
         },
         "Trocas de calor 2": {
@@ -6213,8 +7045,7 @@
                 "m",
                 "T0c",
                 "Tf",
-                "T0ag",
-                "Tf"
+                "T0ag"
             ],
             "quantities": {
                 "cc": "Calor específico do corpo",
@@ -6254,6 +7085,13 @@
                     "maxLimit": 99,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "cc": "[ma*(T0ag - Tf)/(m*(T0c - Tf))]",
+                "m": "[ma*(T0ag - Tf)/(cc*(T0c - Tf))]",
+                "T0c": "[(T0ag*ma + Tf*cc*m - Tf*ma)/(cc*m)]",
+                "Tf": "[(-T0ag*ma + T0c*cc*m)/(cc*m - ma)]",
+                "T0ag": "[(T0c*cc*m - Tf*cc*m + Tf*ma)/ma]"
             }
         },
         "Trocas de calor 3": {
@@ -6264,8 +7102,7 @@
                 "m",
                 "Q",
                 "cc",
-                "deltaT",
-                "m"
+                "deltaT"
             ],
             "quantities": {
                 "La": "Calor latente",
@@ -6305,6 +7142,13 @@
                     "maxLimit": 100,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "La": "[Q/m - cc*deltaT]",
+                "m": "[Q/(La + cc*deltaT)]",
+                "Q": "[m*(La + cc*deltaT)]",
+                "cc": "[(-La*m + Q)/(deltaT*m)]",
+                "deltaT": "[(-La*m + Q)/(cc*m)]"
             }
         },
         "Trocas de calor 4": {
@@ -6339,6 +7183,11 @@
                     "maxLimit": 200,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Q": "[mg*(Tf + 80)]",
+                "mg": "[Q/(Tf + 80)]",
+                "Tf": "[Q/mg - 80]"
             }
         },
         "Trocas de calor 5": {
@@ -6350,8 +7199,7 @@
                 "T0cq",
                 "Tf",
                 "mg",
-                "T0g",
-                "Tf"
+                "T0g"
             ],
             "quantities": {
                 "ccq": "Calor específico do corpo aquecido",
@@ -6398,6 +7246,14 @@
                     "maxLimit": 1,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "ccq": "[-0.5*mg*(T0g + 2.0*Tf + 160.0)/(mcq*(T0cq - Tf))]",
+                "mcq": "[-0.5*mg*(T0g + 2.0*Tf + 160.0)/(ccq*(T0cq - Tf))]",
+                "T0cq": "[(-0.5*T0g*mg + Tf*ccq*mcq - Tf*mg - 80.0*mg)/(ccq*mcq)]",
+                "Tf": "[(T0cq*ccq*mcq + 0.5*T0g*mg + 80.0*mg)/(ccq*mcq - mg)]",
+                "mg": "[2.0*ccq*mcq*(-T0cq + Tf)/(T0g + 2.0*Tf + 160.0)]",
+                "T0g": "[2.0*(-T0cq*ccq*mcq + Tf*ccq*mcq - mg*(Tf + 80.0))/mg]"
             }
         }
     },
@@ -6442,6 +7298,12 @@
                     "maxLimit": 300,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "P0": "[Pf*Vf/Vi]",
+                "Vi": "[Pf*Vf/P0]",
+                "Pf": "[P0*Vi/Vf]",
+                "Vf": "[P0*Vi/Pf]"
             }
         },
         "Transformação isobárica": {
@@ -6484,6 +7346,12 @@
                     "maxLimit": 900,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Vi": "[Ti*Vf/Tf]",
+                "Ti": "[Tf*Vi/Vf]",
+                "Vf": "[Tf*Vi/Ti]",
+                "Tf": "[Ti*Vf/Vi]"
             }
         },
         "Transformação isocórica": {
@@ -6526,6 +7394,12 @@
                     "maxLimit": 900,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "P0": "[Pf*Ti/Tf]",
+                "Ti": "[P0*Tf/Pf]",
+                "Pf": "[P0*Tf/Ti]",
+                "Tf": "[Pf*Ti/P0]"
             }
         },
         "Gás ideal 1": {
@@ -6568,6 +7442,12 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "P": "[0.082*T*n/V]",
+                "V": "[0.082*T*n/P]",
+                "T": "[12.1951219512195*P*V/n]",
+                "n": "[12.1951219512195*P*V/T]"
             }
         },
         "Gás ideal 2": {
@@ -6626,6 +7506,14 @@
                     "maxLimit": 900,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "P0": "[Pf*Ti*Vf/(Tf*Vi)]",
+                "Vi": "[Pf*Ti*Vf/(P0*Tf)]",
+                "Ti": "[P0*Tf*Vi/(Pf*Vf)]",
+                "Pf": "[P0*Tf*Vi/(Ti*Vf)]",
+                "Vf": "[P0*Tf*Vi/(Pf*Ti)]",
+                "Tf": "[Pf*Ti*Vf/(P0*Vi)]"
             }
         },
         "Trabalho de um gás": {
@@ -6660,6 +7548,11 @@
                     "maxLimit": 10000,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "P": "[tau/deltaV]",
+                "deltaV": "[tau/P]",
+                "tau": "[]"
             }
         },
         "Energia cinética média": {
@@ -6694,6 +7587,11 @@
                     "maxLimit": 100,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Ecm": "[12.465*T*n]",
+                "T": "[0.0802246289610911*Ecm/n]",
+                "n": "[0.0802246289610911*Ecm/T]"
             }
         },
         "Energia interna 1": {
@@ -6736,6 +7634,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "deltaU": "[12.465*n*(Tf - Ti)]",
+                "n": "[0.0802246289610911*deltaU/(Tf - Ti)]",
+                "Tf": "[Ti + 0.0802246289610911*deltaU/n]",
+                "Ti": "[Tf - 0.0802246289610911*deltaU/n]"
             }
         },
         "Energia interna 2": {
@@ -6778,6 +7682,12 @@
                     "maxLimit": 5000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "P": "[(Q - deltaU)/deltaV]",
+                "deltaV": "[(Q - deltaU)/P]",
+                "Q": "[P*deltaV + deltaU]",
+                "deltaU": "[-P*deltaV + Q]"
             }
         },
         "Calor 1": {
@@ -6820,6 +7730,12 @@
                     "maxLimit": 400,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Q": "[12.465*n*(Tf - Ti)]",
+                "n": "[0.0802246289610911*Q/(Tf - Ti)]",
+                "Tf": "[0.0802246289610911*Q/n + Ti]",
+                "Ti": "[-0.0802246289610911*Q/n + Tf]"
             }
         },
         "Calor 2": {
@@ -6862,6 +7778,12 @@
                     "maxLimit": 10000,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "P": "[Q/(Vf - Vi)]",
+                "Vf": "[Vi + Q/P]",
+                "Vi": "[Vf - Q/P]",
+                "Q": "[P*(Vf - Vi)]"
             }
         },
         "Transformação adiabática": {
@@ -6904,6 +7826,12 @@
                     "maxLimit": 10000,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "n": "[-200.0*tau/(2493.0*Tf - 2493.0*Ti)]",
+                "Tf": "[Ti - 0.0802246289610911*tau/n]",
+                "Ti": "[Tf + 0.0802246289610911*tau/n]",
+                "tau": "[]"
             }
         },
         "Transformação cíclica": {
@@ -6930,6 +7858,10 @@
                     "maxLimit": 10000,
                     "factor": 10
                 }
+            },
+            "equations": {
+                "Q": "[tau]",
+                "tau": "[]"
             }
         },
         "Rendimento térmica": {
@@ -6964,6 +7896,11 @@
                     "maxLimit": 99,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Qf": "[Qq*(100 - eta)/100]",
+                "Qq": "[-100*Qf/(eta - 100)]",
+                "eta": "[]"
             }
         },
         "Rendimento Carnot": {
@@ -6998,13 +7935,17 @@
                     "maxLimit": 99,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Tfr": "[Tq*(100 - etac)/100]",
+                "Tq": "[-100*Tfr/(etac - 100)]",
+                "etac": "[-100*Tfr/Tq + 100]"
             }
         },
         "Eficiência frigorífica": {
             "equation": "Eq(-Qf/(-Qf + Qq) + e/100, 0)",
             "problem": "Um refrigerador opera entre duas fontes de calor. Sabe-se que:\n",
             "variables": [
-                "Qf",
                 "Qf",
                 "Qq",
                 "e"
@@ -7033,13 +7974,17 @@
                     "maxLimit": 99,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Qf": "[Qq*e/(e + 100)]",
+                "Qq": "[Qf*(e + 100)/e]",
+                "e": "[-100*Qf/(Qf - Qq)]"
             }
         },
         "Eficiência frigorífica máxima": {
             "equation": "Eq(-Tf/(-Tf + Tq) + emax/100, 0)",
             "problem": "Um refrigerador opera entre duas fontes de calor. Sabe-se que:\n",
             "variables": [
-                "Tf",
                 "Tf",
                 "Tq",
                 "emax"
@@ -7068,6 +8013,11 @@
                     "maxLimit": 99,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "Tf": "[Tq*emax/(emax + 100)]",
+                "Tq": "[Tf*(emax + 100)/emax]",
+                "emax": "[-100*Tf/(Tf - Tq)]"
             }
         },
         "Entropia": {
@@ -7077,7 +8027,6 @@
                 "S",
                 "deltaQ",
                 "Ti",
-                "deltaQ",
                 "Tf"
             ],
             "quantities": {
@@ -7111,6 +8060,12 @@
                     "maxLimit": 900,
                     "factor": 1
                 }
+            },
+            "equations": {
+                "S": "[-deltaQ/Ti + deltaQ/Tf]",
+                "deltaQ": "[-S*Tf*Ti/(Tf - Ti)]",
+                "Ti": "[-Tf*deltaQ/(S*Tf - deltaQ)]",
+                "Tf": "[Ti*deltaQ/(S*Ti + deltaQ)]"
             }
         }
     }

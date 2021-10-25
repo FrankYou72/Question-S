@@ -119,11 +119,11 @@ def get_vars(eq, variables):
         if o in argus:
             argus = argus.replace(o, ' ')
     vari = argus.split() #Returns a list with the string variables
-    vars = []
+    vars = {}
     for v in vari: #Get the Sympy Symbols for the selected variables
         for k in variables.keys():
             if v == str(k):
-                vars.append(str(k))
+                vars[str(k)] = k
     return vars
 
 def get_self_quantities(eq, variables, quantities):
