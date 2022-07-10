@@ -7,7 +7,7 @@ from .views.custom_list_view import CustomListView, CustomListShowView
 from .views.contact import ContactView
 
 urlpatterns = [
-    path('/', HomeView.as_view(), name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('question-list/', QuestionListView.as_view(), name='question-list'),
     path('list-show/<int:pk>', QuestionListShowView.as_view(), name='list-show'),
     path('sample', SampleAreaView.as_view(), name='sample-area'),
